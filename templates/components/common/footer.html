@@ -1,0 +1,259 @@
+{{#if banners.bottom}}
+    {{#if settings.data_tag_enabled}}
+        <div class="banners" data-banner-location="bottom">
+            {{#each (limit banners.bottom_metadata 1)}}
+                <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                    <div data-event-type="promotion-click">
+                        {{{this.content}}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="banners" data-banner-location="bottom">
+            <div class="banner">
+                {{{limit banners.bottom 1}}}
+            </div>
+        </div>
+    {{/if}}
+{{/if}}
+<div class="before-footer">
+	<div class="newsletter-footer">
+		 {{#if settings.show_newsletter_box}}
+				{{> store-custom/components/common/subscription-form}}
+		{{/if}}
+	</div>
+</div>
+
+                    
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <section class="footer-info 4a616d6573">
+            <article class="footer-info-col footer-info-dropdown footer-info-col--small  is-open" data-section-type="footer-categories">
+                <h5 class="footer-info-heading">
+                   Contact Us
+                    <i class="icon" aria-hidden="true">
+                        <svg><use xlink:href="#icon-downselector" /></svg>
+                    </i>
+                </h5>
+				<ul class="footer-info-list">
+
+				<li><a href="tel:+1-800-357-5044">Phone: 800-357-5044</a></li>
+
+			<li>	<p>Call us toll free to speak with a sales representative.</p></li>
+				<ul>
+            </article>
+
+           
+        
+		
+		
+		
+		
+		
+		<article class="footer-info-col footer-info-dropdown footer-info-col--small  is-open" data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">
+					Resources
+                    <i class="icon" aria-hidden="true">
+                        <svg><use xlink:href="#icon-downselector" /></svg>
+                    </i>
+                </h5>
+				<ul class="footer-info-list">
+
+						<li><a href="/about-patio-express.html">About Poly Furniture</a></li>
+						<li><a href="/product-care-and-maintenance.html">Product Care & Maintenance</a></li>
+						<li><a href="/faqs.html">FAQs</a></li>
+				<ul>
+            </article>
+		
+		
+		
+				<article class="footer-info-col footer-info-dropdown footer-info-col--small  is-open" data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">
+					Customer Care
+                    <i class="icon" aria-hidden="true">
+                        <svg><use xlink:href="#icon-downselector" /></svg>
+                    </i>
+                </h5>
+				<ul class="footer-info-list">
+
+						<li><a href="/customer-feedback.html">Customer Feedback</a></li>
+						<li><a href="/best-price-guarantee.html">Best Price Guarantee</a></li>
+						<li><a href="/simple-payment-methods.html">Simple Payment Methods</a></li>
+						<li><a target="_blank" class="shipping-scroll" href="https://www.brandster.com/policies#shipping">Shipping & Delivery</a></li>
+						<li><a target="_blank" class="return-scroll" href="https://www.brandster.com/policies#returns">Easy Returns</a></li>
+				<ul>
+            </article>
+		
+		
+		
+		
+		
+		
+		 <article class="footer-info-col footer-info-dropdown footer-info-col--small  is-open" data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">
+                    Support
+                    <i class="icon" aria-hidden="true">
+                        <svg><use xlink:href="#icon-downselector" /></svg>
+                    </i>
+                </h5>
+                <ul class="footer-info-list">
+                    
+                    <li>
+                        <a target="_blank" class="return-scroll" href="https://www.brandster.com/policies#returns">Returns & Exchanges</a>
+                    </li>
+                    <li>
+                        <a target="_blank" class="shipping-scroll" href="https://www.brandster.com/policies#shipping">Shipping Policy</a>
+                    </li>
+                    <li>
+                        <a href="/terms-and-conditions.html">Terms & Conditions</a>
+                    </li>
+                    <li>
+                        <a href="/privacy-policy.html">Privacy Policy</a>
+                    </li>
+                    
+                </ul>
+            </article>		
+		 <article class="footer-info-col footer-info-dropdown footer-info-col--small  is-open" data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">
+                    My Account
+                    <i class="icon" aria-hidden="true">
+                        <svg><use xlink:href="#icon-downselector" /></svg>
+                    </i>
+                </h5>
+                <ul class="footer-info-list">
+                    
+                    <li>
+                        <a href="/account.php">My Account</a>
+                    </li>
+                    <li>
+                        <a href="/account.php?action=order_status">Order History</a>
+                    </li>
+                    <li>
+                        <a href="/cart.php">My Cart</a>
+                    </li>
+                    <li>
+                        <a href="#">Return Status</a>
+                    </li>
+                    
+                </ul>
+            </article>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+            <!-- Brands / Collections -->  
+			
+			<!-- Brands / Collections -->  	
+            
+            {{#if theme_settings.social_icons_footer}}
+                <article class="footer-info-col footer-mobile-limited footer-info-col--small" data-section-type="footer-webPages">
+                    <h5 class="footer-info-heading">{{lang 'social.connect'}}</h5>
+                    {{> components/common/social-links}}
+                </article>
+            {{/if}}
+            
+            
+      
+            {{#if theme_settings.social_icons_footer}}
+                <article class="footer-info-col footer-mobile-limited footer-info-col--small" data-section-type="footer-webPages">
+                    <h5 class="footer-info-heading">{{lang 'social.connect'}}</h5>
+                    {{> components/common/social-links}}
+                </article>
+            {{/if}}
+    
+            {{#if settings.address}}
+              <!--
+                <article class="footer-info-col footer-mobile-limited footer-info-col--small" data-section-type="storeInfo">
+                  
+                    <h5 class="footer-info-heading footer-store-name">{{settings.store_name}}</h5>
+                    <address>{{nl2br settings.address}}</address>
+                    {{#if settings.phone_number}}
+                        <div class="footer-info-phone">
+                            <i class="icon" aria-hidden="true">
+                                <svg><use xlink:href="#icon-phone" /></svg>
+                            </i>
+                            <a href="tel:{{settings.phone_number}}">{{settings.phone_number}}</a>
+                        </div>
+                         
+                    {{/if}}   
+                 </article>   
+                    
+                    -->
+             {{/if}} 
+                    
+                <!-- <article class="footer-info-col footer-info-dropdown footer-info-col--small" data-section-type="footer-categories">-->
+                <!--    <h5 class="footer-info-heading">-->
+                <!--         Services-->
+                <!--        <i class="icon" aria-hidden="true">-->
+                <!--            <svg><use xlink:href="#icon-downselector" /></svg>-->
+                <!--        </i>-->
+                <!--    </h5>-->
+                <!--     <ul class="footer-info-list">-->
+                <!--        <li>-->
+                <!--           <a href="/pro-services/" >Pro Services</a>-->
+                <!--        </li>-->
+                <!--        <li>-->
+                <!--           <a class="modal-iFrame-action"  href="/design-services/" data-reveal-id="modal-iFrame-content">Design Services</a>-->
+                <!--        </li>-->
+                <!--        <li>-->
+                <!--           <a class="modal-iFrame-action" href="/request-free-catalog-price-list/" data-reveal-id="modal-iFrame-content">Free Catalog Request</a>-->
+                <!--        </li>-->
+                <!--    </ul>   -->
+                <!--</article>  -->
+
+        </section>
+        {{#if theme_settings.geotrust_ssl_common_name}}
+            <div class="footer-geotrust-ssl-seal">
+                {{> components/common/geotrust-ssl-seal}}
+            </div>
+        {{/if}}
+        
+        <div class="footer-copyright">
+           
+            {{#if theme_settings.show_copyright_footer}}
+				<p class="powered-by"><span style="color: #5c5c5c;">
+				 <!--{{settings.store_name}}--> Brandster Inc. &copy; {{moment format="YYYY"}} All Rights Reserved. </p>
+            {{/if}}
+            
+            <!--<div class="certs-logos footer-payment-icons" >
+                <img src="{{getImage image 'thumb_size' (cdn 'assets/img/footer/bbb-logo.png')}}" />
+                <img src="{{getImage image 'thumb_size' (cdn 'assets/img/footer/shoppers-logo.png')}}" />
+            </div>-->
+            
+            
+             {{> components/common/payment-icons}}
+        </div>
+        
+       
+            <!--<div class="footer-copyright" style="font-size: 12px;">
+               
+              
+				{{>  store-custom/components/common/disclaimer }}
+                
+                {{#or theme_settings.show_powered_by theme_settings.show_built_by}}
+                
+                {{#if theme_settings.show_powered_by}}
+                    <p class="powered-by">Powered by <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a></p>
+                {{/if}}
+                {{#if theme_settings.show_built_by}}
+                    <p class="powered-by">Built by <a href="https://www.weizenyoung.com/" rel="nofollow">Weizen Young</a></p>
+                {{/if}}
+               {{/or}}
+            </div>-->
+     
+    </div>
+</footer>
+
+
+

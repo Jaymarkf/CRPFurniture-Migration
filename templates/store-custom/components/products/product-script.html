@@ -1,0 +1,718 @@
+<!-- Option Tweak -->
+<script src = "{{cdn 'assets/jquery.min.js'}}" > </script> 
+	<script >
+
+	$(document).ready(function () {
+
+
+		var _cushionOption = "";
+		var _cushionFabrics = "";
+		var _itemColor = "";
+		var _dataColor = "";
+		var _dataFabric = "";
+		var _defaultColor = "";
+		var _defaultFabric = "";
+		var solidColor;
+		var _topMargin;
+		var interval;
+		var counter;
+		var frameClone = "";
+		var _cushionData = ["Quick Ship Cushion", "Yes"];
+		_cushionData["Quick Ship Cushion"] = ["Spectrum Indigo", "Spectrum Sand", "Granite", "Cast charcoal", "Spa", "Natural", "Cast lagoon", "Regatta"];
+		_cushionData["Yes"] = ["No Cushion Fabric", "Cast charcoal"];
+
+
+		function incaseInArray(val, arr) {
+			var _returnValue = false;
+			if (arr.length) {
+				for (var i = 0; arr.length > i; i++) {
+					if (val.toLowerCase() == arr[i].toLowerCase()) {
+						_returnValue = true;
+						break;
+					}
+				}
+			}
+			return _returnValue;
+		}
+
+
+				// framce Color Selector
+		if ($(this).contents().find('.form-field .form-label:contains("Frame Color")').length > 0) {
+			_itemColor = $(this).contents().find('.form-field .form-label:contains("Frame Color")');
+			_itemColor.parent('.form-field').find('select').bind("change", function () {
+				_dataColor = $(this).find(":selected").text();
+
+				if ($(".cushion select").find(":selected").text().toLowerCase() != "yes") {
+					$(".cushion option").each(function () {
+						if ($(this).html().toLowerCase() == "no") {
+							$(this).prop('selected', true);
+							return;
+						}
+					});
+				}
+				if ($(".fabrics select").find(":selected").text().toLowerCase() == "view options") {
+					$(".fabrics option").each(function () {
+						if ($(this).html().toLowerCase() == "none") {
+							$(this).prop('selected', true);
+							return;
+						}
+
+						if ($(this).html().toLowerCase() == "none") {
+							$(this).prop('selected', true);
+							return;
+						}
+					});
+				}
+				$(".framecolor option").each(function () {
+
+					$(this).removeAttr('selected');
+				});
+
+				var color2 = $(".framecolor select").find(":selected").text();
+				$('.productView-img-container img').on('load', function () {
+					$(".framecolor option").each(function () {
+						if ($(this).html() == color2) {
+							$(this).prop('selected', true);
+							$(this).attr("selected", "selected");
+							return;
+						}
+					});
+					frameClone = $(".framecolor .framecolor").clone();
+					$(".test-fab-img").remove();
+				});
+				i//f ($(".framecolor select").prop('selectedIndex') < 1) {
+					//if (splitoption.length > 1) {
+
+						//addcost = Math.abs(splitoption[1].replace("$", ""));
+						//newprice = "$" + (defprice + addcost) + ".00";
+						//newsavelabel = "$" + (defsave - addcost) + ".00";
+						//setTimeout(
+							//function () {
+								//$(".productView-price .save-label .price--saving").text(newsavelabel);
+								//$("#defprice").text(newprice);
+
+					//		}, 2000);
+						//$(".saveover").append(newsavelabel);
+						//$(".saveover").show();
+				//	}
+				//}
+
+
+			});
+
+		}
+
+		//fabric selector
+		$(".fabrics select").bind("change", function () {
+			
+			
+			//reset fabric options
+			//removing "none" values as selected
+			$(".fabrics option").each(function () {
+
+				$(this).removeAttr('selected');
+			});
+
+			//For adding fabric image on product main image
+			
+			//assigning slected fabric options on a variable
+			//some options have custome text like "special offer -"
+			var splitFabs = $(this).find(":selected").text().split("-");
+			
+			//checking if fabric option has a custom text
+			if (splitFabs.length > 1) {
+				var str = splitFabs[0].toLowerCase().trim();
+				var res = str.replace(" ", "_");
+				var res1 = res.replace(" ", "_");
+				var res2 = res1.replace("'", "");
+
+
+			} else
+
+			{
+
+				var str = $(this).find(":selected").text().toLowerCase();
+				var res = str.replace(" ", "_");
+				var res1 = res.replace(" ", "_");
+				var res2 = res1.replace("'", "");
+
+			}
+			
+			
+			//function adding fabric image on product product main image section
+						if ($('.form-field.framecolor').length > 0) {
+				if ($(".framecolor select").prop('selectedIndex') < 1) {
+					var newimg = "<img class='test-fab-img' style='height:100%;z-index:4;' src='https://cdn11.bigcommerce.com/s-n1keky2ro6/content/products/" + res2 + ".jpg' onerror='imgError(this);' />";
+					$(".test-fab-img").remove();
+					$(".productView-image").append(newimg);
+					
+					$(".test-fab-img").on("error", function () {
+						$(this).hide();
+					});
+				}else{
+						$('.productView-img-container img').on('load', function () {
+							//adding overlay fabric image to cover the product image
+							var newimg = "<img class='test-fab-img' style='height:100%;z-index:4;' src='https://cdn11.bigcommerce.com/s-n1keky2ro6/content/products/" + res2 + ".jpg' onerror='imgError(this);' />";
+							$(".test-fab-img").remove();
+							$(".productView-image").append(newimg);
+
+							$(".test-fab-img").on("error", function () {
+								$(this).hide();
+							});
+						});
+					}
+			}
+			else{
+				var newimg = "<img class='test-fab-img' style='height:100%;z-index:4;' src='https://cdn11.bigcommerce.com/s-n1keky2ro6/content/products/" + res2 + ".jpg' onerror='imgError(this);' />";
+				$(".test-fab-img").remove();
+				$(".productView-image").append(newimg);
+				
+				$(".test-fab-img").on("error", function () {
+					$(this).hide();
+				});
+			}
+
+		});
+
+
+
+		$(".solidcolor select").bind("change", function () {
+			var thumb = $(this).find(":selected").text().toLowerCase();
+			var nail = thumb.replace(" ", "_");
+			var nail1 = nail.replace(" ", "_");
+			var nail2 = nail1.replace("'", "");
+			$(".productView-thumbnail img[src*='" + nail2 + "']").trigger("click")
+		});
+
+		//script to change the product main image
+		//table color as 2nd color options
+		$(".tabletopcolor select").bind("change", function () {
+	
+				var colorselected = $(".framecolor select").find(":selected");
+				var color1 = $(".framecolor select").find(":selected").text();
+				var colorval = $(".framecolor select").find(":selected").val();
+
+					
+
+
+					if ($(".tabletopcolor select").find(":selected").text() != color1) {
+
+						var oldimgsrc = $('.productView-img-container img').attr('src');
+						$(".framecolor .framecolor option").each(function () {
+							if ($(this).html() == $(".tabletopcolor select").find(":selected").text()) {
+							$(".framecolor select").find(":selected").val($(this).val());
+							
+								return;
+							}
+						});
+						$('.productView-img-container img').on('load', function () {
+							var newimg = "<img class='test-fab-img' style='padding:0' src='" + $('.productView-img-container a').attr('href') + "' />";
+							$(".test-fab-img").remove();
+
+
+							$(".framecolor option").each(function () {
+
+								$(this).removeAttr('selected');
+							});
+
+							$(".framecolor option").each(function () {
+								if ($(this).html() == color1) {
+									colorselected.val(colorval);
+									return;
+								}
+							});
+							$(".frameclone").remove();
+
+							$(".form-select--small.framecolor").show();
+						});
+
+					}
+
+
+
+			
+
+
+		});
+
+		//when slat color available		
+		$(".slats.color select").bind("change", function () {
+
+				var colorselected1 = $(".framecolor select").find(":selected");
+				var color11 = $(".framecolor select").find(":selected").text();
+				var colorval1 = $(".framecolor select").find(":selected").val();
+				if ($(".cushion select").find(":selected").text().toLowerCase() != "yes") {
+					$(".cushion option").each(function () {
+						if ($(this).html().toLowerCase() == "no") {
+							$(this).prop('selected', true);
+							return;
+						}
+					});
+				}		
+
+
+					if ($(".slats.color select").find(":selected").text() != color11) {
+
+						var oldimgsrc = $('.productView-img-container img').attr('src');
+						$(".framecolor .framecolor option").each(function () {
+							if ($(this).html() == $(".slats.color select").find(":selected").text()) {
+							$(".framecolor select").find(":selected").val($(this).val());
+							
+								return;
+							}
+						});
+						$('.productView-img-container img').on('load', function () {
+							var newimg = "<img class='test-fab-img' style='padding:0' src='" + $('.productView-img-container a').attr('href') + "' />";
+							$(".test-fab-img").remove();
+
+
+							$(".framecolor option").each(function () {
+
+								$(this).removeAttr('selected');
+							});
+
+							$(".framecolor option").each(function () {
+								if ($(this).html() == color11) {
+									colorselected1.val(colorval1);
+									return;
+								}
+							});
+							$(".frameclone").remove();
+
+							$(".form-select--small.framecolor").show();
+						});
+
+					}
+
+
+
+
+		});
+
+
+		//when image thumbnail click
+		$('.productView-thumbnails img').click(function () {
+			$('.productView-img-container img').on('load', function () {
+				$(".test-fab-img").remove();
+			});
+		});
+
+
+		// Cushion Fabric Selector
+		if ($(this).contents().find('.form-field .form-label:contains("Fabrics")').length > 0) {
+			_cushionFabrics = $(this).contents().find('.form-field .form-label:contains("Fabrics")')
+			_defaultFabric = _dataFabric = _cushionFabrics.parent('.form-field').find('.form-option.form-option-swatch:eq(0) span').attr('title');
+			_cushionFabrics.parent('.form-field').find('select').bind("change", function () {
+
+
+			});
+
+			// Cushion Option Selector
+			if ($(this).contents().find('.form-field .form-label:contains("Cushion")').length > 0) {
+
+				_cushionFabrics.parent('.form-field').hide();
+				_cushionOption = $(this).contents().find('.form-field.cushion .form-label:contains("Cushion")');
+				_cushionOption.parent('.form-field').find('select').bind("change", function () {
+					frameClone = $(".framecolor .framecolor").clone();
+					if ($(this).find(":selected").text() == "Yes") {
+						_cushionFabrics.parent('.form-field').find('.form-option.form-option-swatch').hide();
+						_cushionFabrics.parent('.form-field').find('.form-option.form-option-swatch span.form-option-variant').each(function (index) {
+							if (incaseInArray($(this).attr('title'), _cushionData["Yes"]) == false) {
+								$(this).parent('.form-option.form-option-swatch').show();
+
+							}
+						});
+
+
+						$(".fabrics option").each(function () {
+							$(this).removeAttr('selected');
+						});
+
+						$(".fabrics option").each(function () {
+							if ($(this).html().toLowerCase() == "view options") {
+								$(this).prop('selected', true);
+								return;
+							}
+						});
+
+
+						
+
+							
+							$('.productView-img-container img').on('load', function () {
+								var newimg = "<img class='test-fab-img' style='padding:0' src='" + $('.productView-img-container a').attr('href') + "' />";
+								$(".test-fab-img").remove();
+
+
+
+								$(".productView-image").append(newimg);
+
+							});
+
+
+
+
+						_cushionFabrics.parent('.form-field').slideDown();
+					} else if ($(this).find(":selected").text() == "Yes - 2 Seat Cushion") {
+						_cushionFabrics.parent('.form-field').find('.form-option.form-option-swatch').hide();
+						_cushionFabrics.parent('.form-field').find('.form-option.form-option-swatch span.form-option-variant').each(function (index) {
+							if (incaseInArray($(this).attr('title'), _cushionData["Yes"]) == false) {
+								$(this).parent('.form-option.form-option-swatch').show();
+
+							}
+						});
+
+
+						_cushionFabrics.parent('.form-field').slideDown();
+
+
+					} else {
+						_cushionFabrics.parent('.form-field').find('.form-option.form-option-swatch').hide();
+
+						$(".custom-desc").css("margin-top", 0);
+						$(".test-fab-img").hide();
+						$(".fabriclabel").hide();
+						_cushionFabrics.parent('.form-field').hide();
+						$(".fabrics option").each(function () {
+							if ($(this).html().toLowerCase() == "none") {
+								$(this).prop('selected', true);
+								return;
+							}
+						});
+
+
+							$('.productView-img-container img').on('load', function () {
+								var newimg = "<img class='test-fab-img' style='padding:0' src='" + $('.productView-img-container a').attr('href') + "' />";
+								$(".test-fab-img").remove();
+
+
+
+								
+
+								$(".form-select--small.framecolor").show();
+
+
+							});
+
+						
+
+
+						if ($('.solidcolor').length > 0) {
+							$('.productView-img-container img').on('load', function () {
+								$(".test-fab-img").remove();
+							});
+
+						}
+
+					}
+
+				});
+
+
+			}
+		}
+
+
+		//Products with two tone options
+		var colorPattern = "";
+		var solidColor = "";
+		var frameColor = "";
+		var slatsColor = "";
+		var text1 = 'White';
+		if ($(this).contents().find('.form-field .form-label:contains("Color Pattern")').length > 0) {
+
+			solidColor = $(this).contents().find('.form-field .form-label:contains("Solid Color")');
+			frameColor = $(this).contents().find('.form-field .form-label:contains("Frame Color")');
+			slatsColor = $(this).contents().find('.form-field .form-label:contains("Table Top Color")');
+			solidColor.parent('.form-field').hide();
+			frameColor.parent('.form-field').hide();
+			slatsColor.parent('.form-field').hide();
+			colorPattern = $(this).contents().find('.form-field .form-label:contains("Color Pattern")');
+			colorPattern.parent('.form-field').find('select').bind("change", function () {
+				if ($(this).find(":selected").text() == "Solid Color") {
+					solidColor.parent('.form-field').slideDown();
+					frameColor.parent('.form-field').hide();
+					slatsColor.parent('.form-field').hide();
+
+					$(".framecolor option").each(function () {
+						if ($(this).html().toLowerCase() == "none") {
+							$(this).prop('selected', true);
+							return;
+						}
+					});
+					$(".tabletopcolor option").each(function () {
+						if ($(this).html().toLowerCase() == "none") {
+							$(this).prop('selected', true);
+							return;
+						}
+					});
+
+
+					$(".solidcolor option").each(function () {
+						if ($(this).html().toLowerCase() == "none") {
+							$(this).removeAttr('selected');
+							return;
+						}
+					});
+					$(".solidcolor option").each(function () {
+						if ($(this).html().toLowerCase() == "view options") {
+							$(this).prop('selected', true);
+							return;
+						}
+					});
+
+
+				} else if ($(this).find(":selected").text() == "Two Tone") {
+					frameColor.parent('.form-field').slideDown();
+					slatsColor.parent('.form-field').slideDown();
+					solidColor.parent('.form-field').hide();
+
+
+					$(".solidcolor option").each(function () {
+						if ($(this).html().toLowerCase() == "none") {
+							$(this).prop('selected', true);
+							return;
+						}
+					});
+
+
+					$(".framecolor option").each(function () {
+						if ($(this).html().toLowerCase() == "none") {
+							$(this).removeAttr('selected');
+							return;
+						}
+					});
+					$(".tabletopcolor option").each(function () {
+						if ($(this).html().toLowerCase() == "none") {
+							$(this).removeAttr('selected');
+							return;
+						}
+					});
+
+					$(".framecolor option").each(function () {
+						if ($(this).html().toLowerCase() == "view options") {
+							$(this).prop('selected', true);
+							return;
+						}
+					});
+					$(".tabletopcolor option").each(function () {
+						if ($(this).html().toLowerCase() == "view options") {
+							$(this).prop('selected', true);
+							return;
+						}
+					});
+
+
+				} else {
+
+					solidColor.parent('.form-field').hide();
+					frameColor.parent('.form-field').hide();
+					slatsColor.parent('.form-field').hide();
+
+				}
+			});
+
+
+
+
+					$(".solidcolor select").bind("change", function () {
+			var thumb = $(this).find(":selected").text().toLowerCase();
+			var nail = thumb.replace(" ", "_");
+			var nail1 = nail.replace(" ", "_");
+			var nail2 = nail1.replace("'", "");
+			$(".productView-thumbnail img[src*='" + nail2 + "']").trigger("click")
+		});
+
+		}
+
+
+		//hiding All None Option
+		$("select option").each(function () {
+			if ($(this).html() == "None") {
+				$(this).hide();
+				return;
+			}
+		});
+
+
+		$("select option").each(function () {
+			if ($(this).html() == "none") {
+				$(this).hide();
+				return;
+			}
+		});
+
+		if ($(".productView-options-inner .form-field").length < 2) {
+			$(".form-field select option").each(function () {
+				if ($(this).html() == "None") {
+					$(this).hide();
+					return;
+				}
+			});
+		}
+		//Hiding Specs tab without any value
+		if ($("#tab-additional table tr").length < 1) {
+			$("#tab-additional").hide();
+			$(this).contents().find('span:contains("Specifications")').hide();
+		}
+
+		var specheight = Math.abs($(".specs-height").text()) + '"';
+
+		var specWidth = Math.abs($(".specs-width").text()) + '"';
+
+		var specDepth = Math.abs($(".specs-depth").text()) + '"';
+		$(".specs-height").text(specheight);
+		$(".specs-width").text(specWidth);
+		$(".specs-depth").text(specDepth);
+
+
+			if ($(".specs-assembly").text().toLowerCase().indexOf("content") > 0){
+			
+				var newAssembly = '<a href="' + $(".specs-assembly").text() + '">Download</a>';
+				
+				
+				$(".specs-assembly").text("");
+				
+				$(".specs-assembly").append(newAssembly);
+			
+			
+			
+			
+			}
+
+
+
+		$(".lazyautosizes").click(function () {
+
+			$(".test-fab-img").hide();
+		});
+
+		$(".form-option-variant").click(function () {
+
+			$(".productView-product").scrollTop(580);
+
+		});
+		$(".tab-desc").click(function () {
+			$('html, body').animate({
+				scrollTop: $("#tab-desc").offset().top - ($(".header").height() + $("#menu").height() + $(".custom-tab").height() + 20)
+			}, 1000)
+		});
+		$(".tab-additional").click(function () {
+			$('html, body').animate({
+				scrollTop: $("#tab-additional").offset().top - ($(".header").height() + $("#menu").height() + $(".custom-tab").height() + 20)
+			}, 1000)
+
+		});
+		$(".tab-reviews").click(function () {
+			$('html, body').animate({
+				scrollTop: $("#tab-reviews").offset().top - ($(".header").height() + $("#menu").height() + $(".custom-tab").height() + 20)
+			}, 1000)
+		});
+		$(".tab-info-merchant").click(function () {
+			$('html, body').animate({
+				scrollTop: $("#tab-info-merchant").offset().top - ($(".header").height() + $("#menu").height() + $(".custom-tab").height() + 20)
+			}, 1000)
+		});
+		$(".tab-info-wnm").click(function () {
+			$('html, body').animate({
+				scrollTop: $("#tab-info-wnm").offset().top - ($(".header").height() + $("#menu").height() + $(".custom-tab").height() + 20)
+			}, 1000)
+		});
+		$(".tab-info-finishes").click(function () {
+			$('html, body').animate({
+				scrollTop: $("#tab-info-finishes").offset().top - ($(".header").height() + $("#menu").height() + $(".custom-tab").height() + 20)
+			}, 1000)
+		});
+		$('h2:contains("Short Description")').hide();
+		$('h2:contains("Description")').hide();
+
+
+		var addcost = 0;
+		var defsave = Math.abs($(".productView-price .save-label .price--saving").text().replace("$", ""));
+		var defprice = Math.abs($(".productView-price #defprice").text().replace("$", ""));
+		var newprice = "";
+		var newsavelabel = "";
+		var splitoption = "";
+		$(".benchsize select").bind("change", function () {
+			//$(".saveover").empty();
+			//$(".saveover").hide();
+			// splitoption = $(this).find(":selected").text().split("+");
+			// if ($(".framecolor select").prop('selectedIndex') < 1) {
+				// if (splitoption.length > 1) {
+					 //addcost = Math.abs(splitoption[1].replace("$", ""));
+					//newprice = "$" + (defprice + addcost) + ".00";
+				//	newsavelabel = "$" + (defsave - addcost) + ".00";
+				//	setTimeout(
+				//		function () {
+				//			$(".productView-price .save-label .price--saving").text(newsavelabel);
+				//			$("#defprice").text(newprice);
+
+				//		}, 2000);
+					//$(".saveover").append(newsavelabel);
+					//$(".saveover").show();
+			//	}
+		//	}
+		});
+		
+		var addcost = 0;
+		var defsave = Math.abs($(".productView-price .save-label .price--saving").text().replace("$", ""));
+		var defprice = Math.abs($(".productView-price #defprice").text().replace("$", ""));
+		var saleprice1= 0 ;
+		
+		var saveprice1= 0 ;
+		var newprice = "";
+		var newsavelabel = "";
+		var splitoption = "";
+		
+		$(".productView-price #defprice").on('DOMSubtreeModified', function () {
+			var saleprice = Math.abs($(".productView-price #saleprice").text().replace("$", "").replace(",", ""));
+			var defprice =  Math.abs($(".productView-price #defprice").text().replace("$", "").replace(",", ""));
+			var saveprice =  Math.abs($(".productView-price .save-label .price--saving").text().replace("$", "").replace(",", ""));
+			
+			if (saleprice1 == 0 ) {
+				saleprice1 = saleprice;
+			
+			}
+			
+			if (saveprice1 == 0 ) {
+				saveprice1= saveprice;
+			
+			}
+			
+			if($('.benchsize select').length > 0){
+			splitoption = $('.benchsize select').find(":selected").text().split("+");
+			}
+			
+			if($('.withwheels select').length > 0){
+			splitoption = $('.withwheels select').find(":selected").text().split("+");
+			}
+			
+			
+			if ($(".framecolor select").prop('selectedIndex') < 1) {
+				 if (splitoption.length > 1) {
+					 addcost = Math.abs(splitoption[1].replace("$", ""));
+					 newprice = "$" + ((saleprice1 + addcost).toFixed(2));
+					 newsavelabel = "$" + ((saveprice1 - addcost).toFixed(2));
+					$(".price.price--saving").text(newsavelabel);
+					$(".productView-price #saleprice").text(newprice);
+			}
+			}else{
+			
+			$(".saveover").empty();
+			$(".saveover").hide();
+			
+			
+			$(".price.price--saving").text('$' + ((defprice - saleprice).toFixed(2)));
+			}
+			});
+			
+		
+		
+
+	});
+
+
+
+</script>
+
+<!-- Option Tweak -->

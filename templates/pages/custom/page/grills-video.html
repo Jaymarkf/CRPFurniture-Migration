@@ -1,0 +1,69 @@
+{{#partial "page"}}
+<style>
+.breadcrumb-label{display:none;}
+.page-content.grill-video p{text-align:left}
+
+</style>
+<div class="container">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <main class="page">
+       <!-- {{#unless theme_settings.hide_page_heading }}
+            <h1 class="page-heading">{{ page.title }}</h1>
+        {{/unless}}-->
+    
+        {{#if page.sub_pages}}
+        <nav class="navBar navBar--sub">
+            <ul class="navBar-section account-navigation">
+            {{#each page.sub_pages}}
+                <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+            {{/each}}
+            </ul>
+        </nav>
+        {{/if}}
+        
+        {{{region name="page_builder_content"}}}
+     
+        <div class="page-content grill-video">
+            {{#replace '%%Syndicate%%' page.content}}
+                {{> components/page/rss_feed}}
+            {{else}}
+                {{{page.content}}}
+            {{/replace}}
+			{{#or (if page.title '===' 'Coyote Grills And Skills: Quick Tips From Chef Jonathan Collins On Infrared Sear Burner') (if page.title '===' 'Video Spotlight on the New Coyote Pellet Grill with Chef Jonathan Collins') (if page.title '===' 'Coyote Grills And Skills: Quick Tips From Chef Jonathan Collins On Warming Rack') (if page.title '===' 'Coyote Grills And Skills: Quick Tips From Chef Jonathan Collins On Standard Grates') (if page.title '===' 'Coyote Grills and Skills: Quick Tips from Chef Jonathan Collins on Kitchen Ventilation')}}
+			 {{> components/products/featured3 products=products.featured1 columns=theme_settings.homepage_featured_products_column_count}}
+			 {{/or}}
+			 
+			{{#if page.title '===' 'Coyote Grills and Skills: Quick Tips from Chef Jonathan Collins on the Infrared Rotisserie'}}
+				{{> components/products/featured4 products=products.featured4 columns=theme_settings.homepage_featured_products_column_count}}
+			{{/if}}
+			
+			{{#if page.title '===' 'Coyote Grills And Skills: Quick Tips From Chef Jonathan Collins On Gas Grill Conversion'}}
+				{{> components/products/featured5 products=products.featured5 columns=theme_settings.homepage_featured_products_column_count}}
+			{{/if}}
+			{{#if page.title '===' 'Coyote Outdoor Kitchen Designed for Skip Bedell'}}
+				{{> components/products/featured6 products=products.featured6 columns=theme_settings.homepage_featured_products_column_count}}
+			{{/if}}
+			{{#if page.title '===' 'Charcoal Tray - Coyote Grills and Skills Quick Tips'}}
+				{{> components/products/featured7 products=products.featured7 columns=theme_settings.homepage_featured_products_column_count}}
+			{{/if}}
+			{{#if page.title '===' 'Coyote Grills and Skills: Quick Tips from Chef Jonathan Collins on Drop in Griddles'}}
+				{{> components/products/featured8 products=products.featured8 columns=theme_settings.homepage_featured_products_column_count}}
+			{{/if}}
+        </div>
+    
+        {{#if page.feed}}
+            <ul>
+                {{#each page.feed}}
+                    <li>
+                        <h6><a href="{{url}}" target="_blank">{{title}}</a></h6>
+                        <p>{{content}}</p>
+                    </li>
+                {{/each}}
+            </ul>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}}
+
+{{> layout/base}}

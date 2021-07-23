@@ -1,0 +1,21 @@
+ <!-- sidebar filter tweak -->
+        <script>
+            var _styleSideBar = `
+                    <style>
+                        .categoryID-24 { display:none!important; }
+                        .fresh_filter .BlockContent ul { max-height: 100%; }
+                        /*
+                        .page-sidebar{ width:100%; }
+                        .page-content { width:100%; }
+                        .filter_form{ display: flex !important;}
+                        .fresh_filter .BlockContent ul { max-height: 100%; display: flex; }
+                         .fresh_filter .BlockContent ul li { margin:0px 5px; }
+                         */
+                    </style>
+                `;
+                
+            $(document).ready(function(){
+                $(this).contents().find('body').append(_styleSideBar);  
+            });  
+        </script>
+<!-- sidebar filter tweak -->

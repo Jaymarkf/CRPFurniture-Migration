@@ -1,0 +1,1096 @@
+// =============================================================================
+// STENCIL
+// =============================================================================
+
+
+// Tools
+// -----------------------------------------------------------------------------
+//
+// 1. Import Citadel's toolkit for use.
+//
+// -----------------------------------------------------------------------------
+
+@import "../../node_modules/@bigcommerce/citadel/dist/tools/toolkit"; // 1
+@import "tools/tools";
+
+// Settings 
+// -----------------------------------------------------------------------------
+//
+// 1. Stencil global settings get imported first.
+// 2. Import all Citadel and Foundation settings.
+// 3. Import Citadel's version of foundation.
+//      - This enables the ability to "null" variables in the Stencil settings.
+// 4. Import Stencil's component settings overrides.
+// 5. Import tools which set/reset Citadel's global settings, to be consumed by
+//    the rest of Stencil.
+//
+// -----------------------------------------------------------------------------
+
+@import "settings/global/global"; // 1
+
+@import "../../node_modules/@bigcommerce/citadel/dist/settings/global/global"; // 2
+
+@import "settings/global/tools"; // 5
+
+@import "../../node_modules/@bigcommerce/citadel/dist/settings/normalize/normalize"; // 2
+@import "../../node_modules/@bigcommerce/citadel/dist/settings/foundation/foundation"; // 2
+@import "../../node_modules/@bigcommerce/citadel/dist/settings/bigcommerce/bigcommerce"; // 2
+
+@import "../../node_modules/@bigcommerce/citadel/dist/vendor/foundation/foundation"; // 3
+
+@import "settings/normalize/normalize"; // 4
+@import "settings/vendor/vendor"; // 4
+@import "settings/foundation/foundation"; // 4
+@import "settings/citadel/citadel"; // 4
+@import "settings/stencil/stencil"; // 4
+@import "settings/layouts/layouts"; // 4
+
+
+// Utilities
+// -----------------------------------------------------------------------------
+
+@import "utilities/utilities";
+@import "../../node_modules/@bigcommerce/citadel/dist/utilities/utilities";
+
+
+// Fonts
+// -----------------------------------------------------------------------------
+
+@import "fonts/fonts";
+
+
+// Components
+// -----------------------------------------------------------------------------
+//
+// 1. Import Citadel's normalize dependency.
+// 2. Import Citadel's components.
+// 2. Import Stencil's component additions and custom components.
+//
+// -----------------------------------------------------------------------------
+
+@import "../../node_modules/@bigcommerce/citadel/dist/vendor/normalize/normalize"; // 1
+@import "../../node_modules/@bigcommerce/citadel/dist/components/components"; // 2
+@import "components/components"; // 3
+
+
+// Layouts
+// -----------------------------------------------------------------------------
+//
+// 1. Stencil design layout files (example: Header or Footer).
+//
+// -----------------------------------------------------------------------------
+
+@import "layouts/layouts"; // 1
+
+@import "vendor/jstree/style";
+
+@import "roots/mods";
+
+
+// -----------------------------------------------------------------------------
+// CUSTOM CSS 
+// -----------------------------------------------------------------------------
+// variables
+//-----------------------------------------------------------------------------
+$custom-backgroundColor : $nav-backgroundColor;
+$custom-Color : $nav-backgroundColor;
+$header_top : #fff0dc;
+
+@mixin background-opacity($color, $opacity: 0.3 , $imp: '') {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity) $imp;
+}
+//-----------------------------------------------------------------------------
+//GR Dropzone
+//-----------------------------------------------------------------------------
+.gr-dropzone{
+	display: none !important;
+}
+//-----------------------------------------------------------------------------
+// MT
+//-----------------------------------------------------------------------------
+.maintenanceNotice {display:none;}
+//-----------------------------------------------------------------------------
+// Hide Address
+//-----------------------------------------------------------------------------
+address{ display:none; }
+//-----------------------------------------------------------------------------
+// Headings
+//-----------------------------------------------------------------------------
+.body:not(.home) .page-heading,  .page-heading + p , .page-heading + p +p , .page-content {
+    text-align: center;
+}
+.breadcrumbs {text-align:left;margin:1rem 0 !important}
+.breadcrumb{font-size:1.08rem;}
+//-----------------------------------------------------------------------------
+// MODAL IFRAME
+//-----------------------------------------------------------------------------
+#modal-iFrame-content{
+	.modal-body {
+
+		padding: .5rem;
+	}
+}
+//-----------------------------------------------------------------------------
+// PAGE BANNERS
+//-----------------------------------------------------------------------------
+.b-top , .b-bottom{
+    display: block;
+	width:100%;
+	text-align: center;
+
+	img{
+		display:inline-block;
+	}
+}
+//-----------------------------------------------------------------------------
+// PAGE Content
+//-----------------------------------------------------------------------------
+ .page-content {
+    margin: auto;
+	    padding-right: 25px;
+    padding-left: 25px;text-align: left; font-size: 1.07rem;
+   
+   ul{
+     list-style: none;  
+   }
+   
+   ul.disc{ 
+     display: inline-block;
+     list-style: disc;
+   }
+} 
+
+//-----------------------------------------------------------------------------
+// HEADER
+//-----------------------------------------------------------------------------
+// header-top
+//-----------------------------------------------------------------------------
+
+.header.slim .header-top , .header-top{ display:none; }
+@media only screen and (min-width: 801px){
+    .header-top{
+        display: flex;
+        justify-content: space-between;
+		flex-flow:row wrap;
+		align-items:center;
+		@include background-opacity($custom-backgroundColor, 0.15 , !important) ;
+		
+		
+        padding: 5px 5%;
+        
+        .left-align{
+            float:left;
+            color: #3d3d3d;
+            font-weight: bold;
+			font-size: .9rem;
+			flex: 0 1 auto;
+			margin: 0 auto;
+            
+            .auth-link{
+               text-decoration: underline;
+            }
+           
+        }
+        .right-align{
+            float:right;
+            display: flex;
+			flex: 0 1 auto;
+			margin: 0 auto;
+			a{color:#3d3d3d;}
+			a:hover{color:#337ab7;}
+        }
+        span{
+            color:#3d3d3d;
+            font-weight: bold;
+			font-size: .9rem;
+			
+        }
+        
+        .header_top{
+            display:flex;
+            margin: 0px 10px;
+            
+             @media only screen and (max-width: 900px){
+                 display:none;
+             }
+            
+            a{
+                padding: 0px 5px;
+				color:#3d3d3d;
+            
+            }
+			
+            a:hover{
+                padding: 0px 5px;
+				color:#337ab7;
+            
+            }
+            
+
+            
+
+          
+            
+        }
+    }
+  
+}
+
+//------------------------------------------------------------------------------
+// Logo
+//------------------------------------------------------------------------------
+@media only screen and (max-width: 800px){
+    .header-logo-image-container {
+        margin:auto;
+    }
+	
+	.header-logo:not(.logo-full-size) .header-logo-image {
+		max-height: none;
+		top: 50%;
+		transform: translateY(-50%);
+		height: 35px;
+	}
+}
+
+
+//------------------------------------------------------------------------------
+// Menu
+//------------------------------------------------------------------------------
+.mobileMenu-toggle .mobileMenu-toggleIcon, .mobileMenu-toggle .mobileMenu-toggleIcon::after, .mobileMenu-toggle .mobileMenu-toggleIcon::before {
+    background: #4e4e4e !important;
+}
+.navPages-container{
+	.icon svg {
+		fill: #fff	;
+		stroke: #fff;
+	}
+}
+
+//------------------------------------------------------------------------------
+// Sticky Main Nav
+//------------------------------------------------------------------------------
+
+@media only screen and (min-width: 801px){
+
+    @media only screen and (min-width: 900px){
+        
+        .navPages-action{
+			padding: 12px 7px;
+			width: 100%;
+			font-size: 16px;
+        }
+
+    }
+
+
+
+    .navPages-action-moreIcon {
+        display: inline-block !important;
+    }
+    .header.slim .navPages-container{
+        top: 0 !important;
+    }
+    .desktopMenu-toggle{
+        left: -44px !important;
+        width: 0px !important;
+        
+    }
+}
+
+@media only screen and (min-width: 1541px){
+        .navPages-action{
+			padding: 12px;
+			width: 100%;
+			font-size: 1rem;
+        }
+}
+
+    @media only screen and (max-width: 1540px){
+		@media only screen and (min-width: 1341px){
+		.navPages-action{    padding: 12px 8px;
+    width: 100%;
+    font-size: 16px;}
+	
+	}}
+	@media only screen and (max-width: 1340px){
+		@media only screen and (min-width: 1245px){
+	
+		.navPages-action{ padding: 12px 7px;
+    width: 100%;
+    font-size: 16px;}
+	
+	}}
+	@media only screen and (max-width: 1244px){
+		@media only screen and (min-width: 901px){
+	
+		.navPages-action{ padding: 12px 7px;
+    width: 100%;
+    font-size: 16px;}
+	
+	}}
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// FOOTER
+//------------------------------------------------------------------------------
+
+.footer-newsletter{
+	padding: 25px 15px 40px;
+}
+
+.footer-info-col[data-section-type="footer-brands"] {
+    flex: 1 1 auto;
+    order: 2;
+}
+
+.footer-info-col[data-section-type="footer-categories"] {
+    flex: 1 1 auto;
+    order: 3;
+}
+
+.footer-info-col[data-section-type="footer-webPages"] {
+    flex: 1 1 auto;
+    order: 1;
+}
+
+.footer-info-col[data-section-type=storeInfo] {
+    flex: 1 1 auto;
+    order: 4;
+}
+//------------------------------------------------------------------------------
+// certs Logo
+//------------------------------------------------------------------------------
+.certs-logos{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;   
+    
+    img{
+        display: inline-block;
+        max-width: 140px;
+        margin: 0px 5px;
+    }
+}
+//------------------------------------------------------------------------------
+// Disclaimer
+//-------------------------------------------------------------------------------
+.disclaimer{
+    text-align: center;
+    width: 100%;
+    font-size:16px; 
+    h5 , p{ font-size:16px; }
+}
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// HOME
+//------------------------------------------------------------------------------
+// featured images
+//-----------------------------------------------------------------------------
+
+
+@media only screen and (max-width: 800px){
+    .heroCarousel+.banners, .heroCarousel+.banners .featured-categories {
+        padding-top: 5px;
+    }
+}
+
+@media only screen and (min-width: 801px){
+    .featured-images{
+        .left-img {
+            flex: 0 1 calc(62% - 12px);
+            
+        }
+        .right-img{
+            flex: 0 1 calc(37.7% - 12px);
+            
+        }
+        .center-img{
+            flex: 0 1 calc(100% - 12px);
+            
+        }
+        
+        
+    }
+}
+//------------------------------------------------------------------------------
+// NEW LETTER - ABOUT-US
+//------------------------------------------------------------------------------
+.about-us-container{
+        width: 45%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 25px;
+    h4{
+        margin: 0;
+        padding: 10px;
+        text-align:center;
+    }
+    
+    .about-us-content{
+        padding: 2% 4%;
+		font-size:1.1rem;
+    }
+}
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// CART
+//------------------------------------------------------------------------------
+.cart-header-item {
+    color: $custom-Color;
+}
+.cart-total-label {
+    color:$custom-Color;
+}
+.button--primary.active, .button--primary.is-active, .button--primary:focus, .button--primary:hover {
+    border: 1px solid #000;
+}
+
+
+.cart-item-title{
+    text-align: left;
+}
+
+.definitionBox{
+    display: flex;
+    text-align: left;
+	align-items: flex-start;
+	
+	.definitionList-key {
+		color: #989898;
+		float: none;
+		font-weight: 600;
+		margin: 0 0.35714rem 0 0;
+		width: 40%;
+		text-align: left;
+		display: inline-block;
+	}
+	.definitionList-value {
+		margin: 0;
+		text-align: left;
+		width: 40%;
+		display: inline-block;
+	}
+		
+	
+}
+.cart-additionalCheckoutButtons{
+	position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 801px){
+	.cart-item-image {
+		margin-left: 0;
+		width: 100%;
+	}
+}
+
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// PRODUCT PAGE
+//------------------------------------------------------------------------------
+
+.productView-specs{
+    .productView-info-name, .productView-info-value{
+        font-size:18px;
+        @media only screen and (max-width: 580px){
+             font-size:16px;
+        }
+    }
+    
+}
+
+//------------------------------------------------------------------------------
+// Product Options container
+//------------------------------------------------------------------------------
+@media only screen and (max-width: 800px){
+	.form-option-expanded{
+		display:none !important;
+	}
+}	
+
+//------------------------------------------------------------------------------
+// Product Options input-checkbox
+//------------------------------------------------------------------------------
+div[data-product-attribute="input-checkbox"].form-field {
+	display:flex;
+	margin-bottom: 10px;
+	position:relative;
+	
+	label.form-label:first-child{ 
+		order: 2;
+		width: 100%;
+	
+	}
+	label.form-label:nth-of-type(2){ 
+		order: 1;
+		width: 0;
+	}
+	.form-checkbox{
+		bottom: 10px;
+	}
+}
+
+//------------------------------------------------------------------------------
+// Request Free Catalog / Price List
+//------------------------------------------------------------------------------
+
+.quickform-request-buttons{
+    border-top: 1px solid #d2d2d2;
+    border-bottom: 1px solid #d2d2d2;
+    padding: 10px 0px 0px;
+	margin-bottom:20px;
+}
+
+.productView-quoteLink{
+display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    strong{
+    }
+}
+
+//------------------------------------------------------------------------------
+// Description specs table
+//------------------------------------------------------------------------------
+div[itemprop="description"]{
+    table{
+        tr{
+            td:first-child{
+                padding-right:10px;
+              
+            }
+            td:last-child{
+                
+                &:before{
+                    content: ":";
+                    padding-right: 10px;
+                }
+            }
+        }
+       
+    } 
+}
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// PRICE
+//------------------------------------------------------------------------------
+.price{
+        color: #6aaf0a;
+    font-weight: bold;
+}
+.price--non-sale{
+    color: #4e4e4e;
+    font-weight: normal;
+}
+//------------------------------------------------------------------------------
+// SALE TAG
+//------------------------------------------------------------------------------
+.sale-flag-side {
+    display: none !important;
+}
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// CUSTOM PAGES
+//------------------------------------------------------------------------------
+// Contact form 
+//------------------------------------------------------------------------------
+.form-field--success .form-input[type=text]{
+    border-color: #ccc;
+	
+}
+.modal-body > :last-child{    max-width: 80% !important;}
+#contact-us-page{
+    max-width: 100%;
+    margin: auto;
+	text-align:center;
+    
+    .form-label{ text-align:left; margin-bottom: .2rem; } .form-row--half .form-field { width: 100%; } .form-field { width: 100%; } .g-recaptcha{ text-align:center; overflow: hidden; } .g-recaptcha > div { display:inline-block; }  .form-field { margin: 0 0 .5rem; } .form-input{ height:2.2rem; } 
+    .form-actions .button{     margin-top: -10px; margin-bottom: 0px;  }
+}
+
+//------------------------------------------------------------------------------
+// Contact US
+//------------------------------------------------------------------------------
+.custom-page.contact-us {
+    text-align: center;
+    
+    h1.page-heading.alter{ display:block !important; }
+}
+
+
+
+//------------------------------------------------------------------------------
+// Pro-services page
+//------------------------------------------------------------------------------
+
+.custom-page.contract{
+    font-family: 'Montserrat', sans-serif;
+    background: url("https://cdn11.bigcommerce.com/s-n1keky2ro6/content/b2b-bg.png");
+    background-size: cover;
+	background-repeat:no-repeat;
+	background-position:center;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 4%;
+    
+    @media only screen and (max-width: 800px){
+        display: block;
+    }
+    
+    > p {display: none;}
+    
+    .page-heading {display:none;}
+
+    .service-content{
+        @media only screen and (min-width: 801px){
+           width: 65%;
+        }
+        
+        h2{ 
+            color: #FFF;
+            font-size: 4vw;
+            margin:0;
+			
+            @media only screen and (min-width: 1601px){
+                font-size: 52px;
+            }
+            @media only screen and (max-width: 800px){
+                font-size: 28px;
+            }
+            @media only screen and (max-width: 580px){
+                text-align: center;
+                line-height: 1;
+                margin-bottom: 20px;
+            }
+
+        }
+        ul.features{
+            list-style: none;
+            
+            
+            img{
+                display:inline-block;
+                 @media only screen and (max-width: 800px){
+                     width: 24px;
+                }
+                
+                 @media only screen and (max-width: 576px){
+                     width: 18px;
+                }
+            }
+            span {
+                color: #FFF;
+                font-size: 2.3vw;
+                padding-left: 2%;
+                font-weight: bold;
+                vertical-align: middle;
+                
+                @media only screen and (min-width: 1601px){
+					font-size: 32px;
+                }
+                @media only screen and (max-width: 800px){
+					font-size: 18px;
+                }
+            }
+        }
+        
+        .why-apply{
+            padding: 2%;
+            text-align: center;
+            @include background-opacity($custom-backgroundColor, 0.68 , !important) ;
+            
+            h1{
+                color:#FFF;
+                text-align:center;  
+                margin: 0px 0px 25px;
+                border-bottom: 2px ridge #fac444;
+                
+                @media only screen and (min-width: 801px){
+                     margin: 0 0 6%;
+                     width: auto;
+                    display: inline-block;
+                }
+                 
+				@media only screen and (max-width: 800px){
+					font-size: 28px;
+				}
+            }
+            
+            .why-list{
+                display: flex;
+                justify-content: space-evenly;
+                
+                @media only screen and (max-width: 576px){
+                    display: block;
+                    padding: 0px 0px 0px 10px;
+                }
+				
+                ul{
+                    color:#FFF;
+                    margin-bottom: 2%;
+                    li{
+                        color: #FFF;
+                        margin-bottom: 6%;
+                        font-size: 1.2vw;
+                        font-weight: bold;
+
+                        @media only screen and (min-width: 1601px){
+							font-size: 18px;
+                        }
+                        @media only screen and (min-width: 801px){
+                            margin-bottom: 30px;
+                        }
+                         
+                        @media only screen and (max-width: 800px){
+                            margin-bottom: 2%;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    #contact-us-page{
+        font-family: 'Montserrat', sans-serif;
+        max-width: 34%;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        background: white;
+        
+        @media only screen and (max-width: 800px){
+            max-width: 100%;
+            width: 100%;
+            margin-top: 25px;
+        }
+        
+        .contact-header{
+                background: #6aaf0a;
+            color: #FFF;
+            margin: 0;
+            text-transform: capitalize;
+            font-family: Montserrat,sans-serif;
+            font-size: 1.5vw;
+            padding: 10px;
+            
+            @media only screen and (min-width: 1601px){
+                font-size: 24px;
+            }
+            
+            @media only screen and (max-width: 800px){
+                font-size: 20px;
+            }
+            
+        }
+        
+        
+        form{
+            background: #eeeeee;
+            padding: 4%;
+            margin: 4%;
+            
+            .form-label{ text-align:left; font-weight: bold; color: #6aaf0a; }
+            .form-actions{  margin-top: -10px; }
+            
+        }
+        
+        #contact-us-success{
+            padding:6%;
+        }
+    }
+    
+    &:after, &:before {
+        display:none;
+    }
+}
+
+//------------------------------------------------------------------------------
+
+
+
+
+.request-quote-container hr{display:none;}
+.request-quote-container {margin-top:50px;}
+.custom-page.request-quote{
+    font-family: 'Montserrat', sans-serif;
+    background: url("https://cdn11.bigcommerce.com/s-n1keky2ro6/content/bf-request-quote-background.jpg");
+    background-size: auto 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 4%;
+    
+    @media only screen and (max-width: 800px){
+        display: block;
+    }
+    
+    > p {display: none;}
+    
+    .page-heading {display:none;}
+
+    .service-content{
+        @media only screen and (min-width: 801px){
+           width: 65%;
+        }
+        
+        h2{ 
+            color: #FFF;
+            font-size: 3rem;
+            margin:0;
+			
+            @media only screen and (min-width: 1601px){
+                font-size: 52px;
+            }
+            @media only screen and (max-width: 800px){
+                font-size: 28px;
+            }
+            @media only screen and (max-width: 580px){
+                text-align: center;
+                line-height: 1;
+                margin-bottom: 20px;
+            }
+
+        }
+        ul.features{
+            list-style: none;
+            
+            li{margin: 20px 0;}
+            img{
+                display:inline-block;
+                 @media only screen and (max-width: 800px){
+                     width: 24px;
+                }
+                
+                 @media only screen and (max-width: 576px){
+                     width: 18px;
+                }
+            }
+            span {
+                color: #FFF;
+                font-size: 2rem;
+                padding-left: 2%;
+                font-weight: bold;
+                vertical-align: middle;
+                
+                @media only screen and (min-width: 1601px){
+					font-size: 32px;
+                }
+                @media only screen and (max-width: 800px){
+					font-size: 18px;
+                }
+            }
+        }
+        
+        .why-apply{
+            padding: 2%;
+            text-align: center;
+            @include background-opacity($custom-backgroundColor, 0.68 , !important) ;
+            
+            h1{
+                color:#FFF;
+                text-align:center;  
+                margin: 0px 0px 25px;
+                border-bottom: 2px ridge #fac444;;
+                
+                @media only screen and (min-width: 801px){
+                     margin: 0 0 6%;
+                     width: auto;
+                    display: inline-block;
+                }
+                 
+				@media only screen and (max-width: 800px){
+					font-size: 28px;
+				}
+            }
+            
+            .why-list{
+                display: flex;
+                justify-content: space-evenly;
+                
+                @media only screen and (max-width: 576px){
+                    display: block;
+                    padding: 0px 0px 0px 10px;
+                }
+				
+                ul{
+                    color:#FFF;
+                    margin-bottom: 2%;
+                    li{
+                        color: #FFF;
+                        margin-bottom: 6%;
+                        font-size: 1.2vw;
+                        font-weight: bold;
+
+                        @media only screen and (min-width: 1601px){
+							font-size: 18px;
+                        }
+                        @media only screen and (min-width: 801px){
+                            margin-bottom: 30px;
+                        }
+                         
+                        @media only screen and (max-width: 800px){
+                            margin-bottom: 2%;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    #contact-us-page{
+        font-family: 'Montserrat', sans-serif;
+        max-width: 34%;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        background: white;
+        
+        @media only screen and (max-width: 800px){
+            max-width: 100%;
+            width: 100%;
+            margin-top: 25px;
+        }
+        
+        .contact-header{
+                background: #fac444;
+            color: #FFF;
+            margin: 0;
+            text-transform: capitalize;
+            font-family: Montserrat,sans-serif;
+            font-size: 1.5vw;
+            padding: 10px;
+            
+            @media only screen and (min-width: 1601px){
+                font-size: 24px;
+            }
+            
+            @media only screen and (max-width: 800px){
+                font-size: 20px;
+            }
+            
+        }
+        
+        
+        form{
+            background: #eeeeee;
+            padding: 4%;
+            margin: 4%;
+            
+            .form-label{ text-align:left; font-weight: bold; color: #4c5154; }
+            .form-actions{  margin-top: -10px; }
+            
+        }
+        
+        #contact-us-success{
+            padding:6%;
+        }
+    }
+    
+    &:after, &:before {
+        display:none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------
+// BC PAGE TITLE/CONTENT
+//------------------------------------------------------------------------------
+// SALE page
+//------------------------------------------------------------------------------
+.sale_css{
+	.page-heading{ display:none; }
+}
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+
+// Footer disclaimer right 
+@media only screen and (min-width: 800px){
+    
+.disclaimer p {
+    font-size: 1.07rem;
+}
+article.footer-info-disclaimer.footer-info-col--small {
+    width: 30%;
+    order: 4;
+}
+article.footer-info-newsletter.footer-info-col--small {
+    flex: 1 1 auto;
+    order: 3;
+}
+}
+
+
+@media only screen and (max-width: 800px){
+article.footer-info-newsletter.footer-info-col--small {
+    width: 90%;
+    order: 3;
+	margin:20px auto;
+	padding:20px 0;
+}
+article.footer-info-disclaimer.footer-info-col--small {
+    width: 100%;
+    order: 4;
+}
+}
+
+
+
+
+
+article.footer-info-disclaimer.footer-info-col--small {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.form-prefixPostfix .form-input{margin: 20px 0;}
+.form-prefixPostfix .form-input::placeholder{color: #4c5154;}
+.form-prefixPostfix-button--postfix{margin:0}
+//------------------------------------------------------------------------------

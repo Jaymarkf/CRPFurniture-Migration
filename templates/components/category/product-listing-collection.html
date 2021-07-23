@@ -1,0 +1,7 @@
+
+
+<form action="{{urls.compare}}" method='POST' {{#if settings.data_tag_enabled}} data-list-name="Category: {{category.name}}" {{/if}} data-product-compare>
+
+            {{> components/products/grid-collection products=category.products show_compare=category.show_compare theme_settings=theme_settings event="list" }}
+
+</form>

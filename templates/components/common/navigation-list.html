@@ -1,0 +1,47 @@
+{{#if children}}
+{{#if name '===' 'Clearance Sale'}}
+<a class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}} menu-parent" href="{{url}}" data-collapsible="navPages-{{id}}"  style="color:#fff600">
+    {{name}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
+</a>
+{{else}}
+
+<a class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}} menu-parent" href="{{url}}" data-collapsible="navPages-{{id}}">
+    {{name}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
+</a>
+{{/if}}
+<div class="column-menu navPage-subMenu" id="navPages-{{id}}" aria-hidden="true" tabindex="-1">
+    <ul class="navPage-subMenu-list">
+        {{#each children}}
+            <li class="navPage-subMenu-item">
+                <!--<i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-right" /></svg></i>-->
+                <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}} menu-child" href="{{#if name '==' 'Bar'}}/breezesta-bar/bar-tables.html{{else if name '==' 'Counter'}}/breezestacounter/counter-tables.html{{else}}{{url}}{{/if}}">{{name}}</a>
+                {{#if children}}
+                    <i class="icon navPages-action-moreIcon navPages-action-closed" aria-hidden="true"><svg><use xlink:href="#icon-plus" /></svg></i>
+                    <i class="icon navPages-action-moreIcon navPages-action-open" aria-hidden="true"><svg><use xlink:href="#icon-minus" /></svg></i>
+                {{/if}}
+                
+            
+            {{#if children}}
+			<div class="childlistmenu">
+				<ul class="navPage-childList" id="navPages-{{id}}">
+					{{#each children}}
+						<li class="navPage-childList-item">
+							<a class="navPage-childList-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{name}}</a>
+						</li>
+					{{/each}}
+				</ul>
+			</div>
+            {{/if}}
+			</li>
+        {{/each}}
+    </ul>
+</div>
+{{else}}
+
+{{#if name '===' 'Clearance Sale'}}
+<a class="navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}" style="color:#fff600">{{name}}</a>
+{{else}}
+
+<a class="navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{name}}</a>
+{{/if}}
+{{/if}}

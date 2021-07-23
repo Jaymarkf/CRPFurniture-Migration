@@ -1,0 +1,75 @@
+{{#partial "page"}}
+
+
+
+
+<div class="container">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    {{ pade.id }}
+    
+        <h1 class="page-heading">{{page.title}}</h1>
+    <main class="page custom-page">
+        <script>
+            var pathname = window.location.pathname.replace(/\//g, ""); 
+            $('.custom-page').addClass(pathname);
+			$('.container').addClass(pathname);
+           $(document).ready(function(){
+		   $( 'p:empty' ).remove();
+		   });
+        </script>
+    
+        {{#if page.sub_pages}}
+            <nav class="navBar navBar--sub">
+                <ul class="navBar-section account-navigation">
+                    {{#each page.sub_pages}}
+                        <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+                    {{/each}}
+                </ul>
+            </nav>
+        {{/if}}
+
+			<div class="contactus-info">
+			<div class="col-md-6 contact-sec2-sub">
+			<h3 class="contact-sec2-title">Toll Free</h3>
+			<p class="contact-sec2-text"><i style="margin-right: 10px;color: #1587c6;" class="fa fa-phone"></i><a href="tel:+1-800-357-5044">(800) 357-5044</a></p>
+			</div>
+			<div class="col-md-6 contact-sec2-sub">
+			<h3 class="contact-sec2-title">Phone</h3>
+			<p class="contact-sec2-text"><i style="margin-right: 10px;color: #1587c6;" class="fa fa-phone"></i><a href="tel:+1-772-934-6320">(772) 934-6320</a></p>
+			</div>
+			<div class="col-md-6 contact-sec2-sub">
+			<h3 class="contact-sec2-title">Sales &amp; Assistance</h3>
+			<p class="contact-sec2-text"><i style="margin-right: 10px;color: #1587c6;" class="fa fa-envelope"></i><a href="mailto:Sales@Brandster.com">Sales@Brandster.com</a></p>
+			</div>
+			<div class="col-md-6 contact-sec2-sub">
+			<h3 class="contact-sec2-title">Customer Support</h3>
+			<p class="contact-sec2-text"><i style="margin-right: 10px;color: #1587c6;" class="fa fa-envelope"></i><a href="mailto:Support@Brandster.com">Support@Brandster.com</a></p>
+			</div>
+			<div class="col-md-6 contact-sec2-sub">
+			<h3 class="contact-sec2-title">Shipping &amp; Delivery Info</h3>
+			<p class="contact-sec2-text"><i style="margin-right: 10px;color: #1587c6;" class="fa fa-envelope"></i><a href="mailto:Support@Brandster.com">Support@Brandster.com</a></p>
+			</div>
+			<div class="col-md-6 contact-sec2-sub">
+			<h3 class="contact-sec2-title">New Vendors &amp; Other Inquires</h3>
+			<p class="contact-sec2-text"><i style="margin-right: 10px;color: #1587c6;" class="fa fa-envelope"></i><a href="mailto:Info@Brandster.com">Info@Brandster.com</a></p>
+			</div>
+			<div class="col-md-6 contact-sec2-sub">
+			<h3 class="contact-sec2-title">Location</h3>
+			<p class="contact-sec2-text"><i style="margin-right: 10px;color: #1587c6;" class="fa fa-map-marker"></i>P.O. Box 2772, Stuart, FL 34995</p>
+			</div></div>
+        <p>{{{page.content}}}</p>
+		<p class="quick-contact"><span>Quick Connect</span></p>
+        <div id="contact-us-page" class="page-content page-content--centered">
+			
+            {{#if forms.contact.success}}
+                <div id="contact-us-success">{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</div>
+            {{else}}
+                {{> components/page/contact-us-form}}
+            {{/if}}
+        </div>
+    </main>
+</div>
+
+{{/partial}}
+
+{{> layout/base}}

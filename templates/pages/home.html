@@ -1,0 +1,329 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{#partial "hero"}}
+    {{{region name="home_below_menu"}}}
+    {{#if carousel}}
+        {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows}}
+    {{/if}}
+
+
+
+
+    {{{snippet 'home_content'}}}
+
+    {{{region name="home_below_carousel"}}}
+
+{{/partial}}
+
+{{#partial "page"}}
+    {{#each shipping_messages}}
+        {{> components/common/alert-info message}}
+    {{/each}}
+	
+<style>
+.banners{padding:0;display:inline-block;width:100%;}
+.banner {padding: 0;display:inline-block}
+
+.home-side h3{font-size:17px;color: #3d3d3d;
+    font-weight: bold;
+    padding: 0 0 10px 0 !important;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc !important;margin:0;
+}
+
+.home-side ul{list-style:none;margin-left:0;}
+.home-side li{    padding: 10px !important;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #ccc;}
+.home-side li a{color: #3d3d3d;font-size:15px}
+
+ .home-side li a:hover{   color: #1587c6;}
+
+.home-about{margin-top:20px;text-align: left;}
+.home-about h2{
+    border-bottom: 1px solid #ccc; 
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 7px;
+    position: relative;
+}
+.container-home{display: flex;}
+.home-about h2:before {
+    content: '';
+    bottom: 0;
+    position: absolute;
+    width: 30%;
+    height: 3px;
+    background: #6aaf0a;
+}
+.page-sidebar {
+    padding: 10px 20px 20px 20px;
+	margin-top:24px;
+	background: #fafafa;
+	float:none;
+	height:100%;
+}
+.page-sidebar + .page-content {
+	float:none;
+	margin:0 auto;
+}
+
+.malibu-left-nav {
+	display: none;
+	width: 100%;
+    float: left;
+    text-align: center;
+    color: #395ba7 !important;
+    border: 1px solid #395ba7 !important;
+    font-family: 'Montserrat',sans-serif !important;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+    margin: 10px 0;	}
+
+.malibu-left-nav p{margin:0;padding:0;}
+.sidebar-modal{
+    width: 300px;
+    height: 100%;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 999;
+	padding: 50px 20px;
+ 
+ }
+ 
+ .sidebar-modal h3{font-size:17px;color: #3d3d3d;
+    font-weight: bold;
+    padding: 0 0 10px 0 !important;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc !important;margin:0;
+}
+ .sidebar-modal ul{list-style:none;margin-left:0;}
+.sidebar-modal li{    padding: 10px !important;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #ccc;}
+.malibu-left-close{display: block;
+    position: fixed;
+    left: 45%;
+    top: 15px;
+    font-weight: 600;
+    font-size: 20px;}
+@media only screen and (min-width: 1360px){
+.grid-bg{max-width:1360px;display:block;margin:0 auto;}
+}
+@media only screen and (max-width: 903px){
+.featured-categories > div{width:48%;}
+}
+
+@media only screen and (max-width: 800px){
+.featured-categories > div:nth-child(odd){margin-right:0}
+.featured-categories--text, .featured-categories--text h2{font-size:1.5rem}
+}
+
+@media only screen and (max-width: 767px){
+.container-home{display:block}
+.malibu-left-nav{display:block}
+.page-sidebar{display:none;}
+.featured-categories{padding:0}
+.category-item-wrapper{width:100%;}
+}
+
+@media only screen and (max-width: 500px){
+   .featured-categories > div { flex: 0 100%;
+    margin-bottom: 24px;width:100%;}
+}
+@media only screen and (max-width: 300px){
+.sidebar-modal{
+    width: 90%px;
+	
+	}
+}
+
+</style>
+    <div class="main full grid-bg" style="padding-bottom:50px;padding-top:0">
+        <div class="container-home">
+			
+			 <aside class="page-sidebar home-side">	
+				<h3>PROMOTIONS:</h3>
+				<ul class="categoryGrid" data-product-type="categories">
+					<li><a href="/outdoor-furniture-clearance.html">Clearance Sale</a></li>
+					<li><a href="/sales/">Sales</a></li>
+				</ul>	
+
+				
+
+				<h3>CATEGORIES:</h3>
+				
+					<ul class="categoryGrid" data-product-type="categories">
+						<li><a href="/adirondack-chairs.html">Adirondack Chairs</a></li>	
+						<li><a href="/deep-seating-furniture.html">Deep Seating</a></li>	
+						<li><a href="/chaise-lounge-chairs.html">Lounge Chairs</a></li>	
+						<li><a href="/polycategories/dining-furniture/dining-chairs.html">Dining Chairs</a></li>	
+						<li><a href="/counter-outdoor-furniture/counter-chairs.html">Counter Chairs</a></li>	
+						<li><a href="/outdoor-bar-furniture/bar-chairs.html">Bar Chairs</a></li>	
+						<li><a href="/polycategories/chairs-seating/patio-stools.html">Patio Stools</a></li>	
+						<li><a href="/polycategories/chairs-seating/rocking-chairs.html">Rocking Chairs</a></li>	
+						<li><a href="/polycategories/chairs-seating/gliders.html/">Gliders</a></li>	
+						<li><a href="/polycategories/chairs-seating/porch-swings.html">Porch Swings</a></li>	
+						<li><a href="/polycategories/dining-furniture/dining-tables.html">Dining Tables</a></li>	
+						<li><a href="/outdoor-bar-furniture/bar-tables.html">Bar Tables</a></li>	
+						<li><a href="/counter-outdoor-furniture/counter-tables.html">Counter Tables</a></li>	
+						<li><a href="/tables/side-tables/">Side Tables</a></li>	
+						<li><a href="/tables/coffee-tables/">Coffee Tables</a></li>	
+						<li><a href="/tables/conversation-tables/">Conversation Tables</a></li>	
+						<li><a href="">Picnic Tables</a></li>	
+						<li><a href="/outdoor-furniture-accessories.html">Accessories</a></li>	
+					</ul>	
+
+
+				<h3>SERVICES:</h3>
+					<ul class="categoryGrid" data-product-type="categories">
+						<li><a href="/contract">To The Trade / Contract</a></li>
+					</ul>						
+             </aside>
+            <main class="page-content" id="product-listing-container">
+			<div class="malibu-left-nav"><p>Categories</p></div>
+			{{#if banners.top}}
+				<div class="banners" data-banner-location="top">
+					{{#each (limit banners.top_metadata 1)}}
+					<div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
+						<div class="featured-categories-banner"  data-event-type="promotion-click">
+							{{{this.content}}}
+						</div>
+					</div>
+					{{/each}}
+				</div>
+			{{/if}}
+   			<a style="display:block;width:100%;text-align:center;" href="/contract/">
+				<img class="__mce_add_custom__"  title="Pro Services" src="https://cdn11.bigcommerce.com/s-n1keky2ro6/content/pro-service-banner.png" alt="pro-services-img.png" />
+			</a>      
+            </main>
+        </div>
+			
+			<div class="home-about">
+				<h2>About Patio Express</h2>
+				<p>
+					Patio Express is environmentally friendly and manufactured from HDPE milk jugs and water bottles recycled from landfills every year. 
+					We only use purified recycled plastic that is made with color pigments and Ultra-Violet (UV) stabilizers which result in colorful, maintenance free, 
+					and eco-friendly products. Our unique and innovative outdoor furniture is comfortable, sustainable, and stylish providing just the right decor for your home decorating needs.
+					<br><br>
+					Whether you need new outdoor chairs or benches, you will find that every item in our collection has been carefully manufactured to reflect the highest 
+					standards in the industry. You can take advantage of our best price guarantee to enjoy phenomenal prices on the best patio furniture avaialable online.
+				
+				</p>
+			
+			</div>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+{{/partial}}
+
+{{#partial "hero-bottom"}}
+
+
+
+
+
+
+
+
+    {{#if blog.recent_posts}}
+       <!-- <div class="banners blog-posts-wrap">
+            <div class="container">
+                <h2 class="page-heading">Recent Posts</h2> 
+                <div class="blog-posts">
+                    {{#each blog.recent_posts}}
+                        {{> components/blog/post post=this}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>-->
+    {{/if}}
+
+    {{{region name="home_below_new_products"}}}
+	
+	
+	<!-- Before Footer -->
+	<div id="gr-dropzone-before_footer"></div>
+<div class="sidebar-modal sidecat-scroll">	
+				<h3>PROMOTIONS:</h3>
+				<ul class="categoryGrid" data-product-type="categories">
+					<li><a href="/outdoor-furniture-clearance.html">Clearance Sale</a></li>
+					<li><a href="/sales/">Sales</a></li>
+				</ul>	
+
+				
+
+				<h3>CATEGORIES:</h3>
+				
+					<ul class="categoryGrid" data-product-type="categories">
+						<li><a href="/adirondack-chairs.html">Adirondack Chairs</a></li>		
+						<li><a href="/deep-seating-furniture.html">Deep Seating</a></li>	
+						<li><a href="/chaise-lounge-chairs.html">Lounge Chairs</a></li>	
+						<li><a href="/polycategories/dining-furniture/dining-chairs.html">Dining Chairs</a></li>	
+						<li><a href="/counter-outdoor-furniture/counter-chairs.html">Counter Chairs</a></li>	
+						<li><a href="/outdoor-bar-furniture/bar-chairs.html">Bar Chairs</a></li>	
+						<li><a href="/polycategories/chairs-seating/patio-stools.html">Patio Stools</a></li>	
+						<li><a href="/polycategories/chairs-seating/rocking-chairs.html">Rocking Chairs</a></li>	
+						<li><a href="/polycategories/chairs-seating/gliders.html/">Gliders</a></li>	
+						<li><a href="/polycategories/chairs-seating/porch-swings.html">Porch Swings</a></li>	
+						<li><a href="/polycategories/dining-furniture/dining-tables.html">Dining Tables</a></li>	
+						<li><a href="/outdoor-bar-furniture/bar-tables.html">Bar Tables</a></li>	
+						<li><a href="/counter-outdoor-furniture/counter-tables.html">Counter Tables</a></li>	
+						<li><a href="/tables/side-tables/">Side Tables</a></li>	
+						<li><a href="/tables/coffee-tables/">Coffee Tables</a></li>	
+						<li><a href="/tables/conversation-tables/">Conversation Tables</a></li>	
+						<li><a href="">Picnic Tables</a></li>	
+						<li><a href="/outdoor-furniture-accessories.html">Accessories</a></li>	
+					</ul>	
+
+
+				<h3>SERVICES:</h3>
+					<ul class="categoryGrid" data-product-type="categories">
+						<li><a href="/contract/">To The Trade / Contract</a></li>
+					</ul>	
+<p class="malibu-left-close">X</p>					
+             </div>
+	<script>
+		 $(document).ready(function(){
+			$(".malibu-left-nav").click(function(){
+				$(".sidebar-modal").show(500);
+				});
+				
+			$(".malibu-left-close").click(function(){
+				$(".sidebar-modal").hide(500);
+				});
+		 });
+	</script>
+	
+{{/partial}}
+
+{{> layout/base}}

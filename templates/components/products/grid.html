@@ -1,0 +1,11 @@
+<ul class="productGrid">
+<style>
+.card .card-figure{border:none}
+.card{position:relative}
+</style>
+    {{#each products}}
+    <li class="product">
+            {{>components/products/card settings=../settings show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event position=(add @index 1)}}
+    </li>
+    {{/each}}
+</ul>

@@ -1,0 +1,188 @@
+<div class="modal-body fastCart">
+    <div style="max-width:100% !important;"  class="previewCart">
+        <section class="previewCartCheckout">
+            <div>
+                <a href="{{urls.cart}}" class="button preview-editcart">
+                    {{lang 'cart.added_to_cart.view_or_edit_cart'}}
+                </a>
+                <p data-cart-quantity="{{cart.quantity}}">
+                    {{lang 'cart.added_to_cart.your_cart_contains' num_products=cart.quantity}}.
+                    {{lang 'cart.added_to_cart.order_subtotal'}}
+
+                    <strong>
+                        {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                            {{cart.sub_total.formatted}}
+                        {{else}}
+                            {{> components/common/login-for-pricing}}
+                        {{/or}}
+                    </strong>
+                </p>
+            </div>
+            {{#if cart.show_primary_checkout_button}}
+                <div>
+                    <a href="{{urls.checkout.single_address}}" class="button button--primary">
+                        {{lang 'cart.added_to_cart.proceed_to_checkout'}}
+                    </a>
+                    {{#if cart.additional_checkout_buttons}}
+                        <div class="previewCartCheckout-additionalCheckoutButtons">
+						<style type="text/css">
+							.paypalCommerce-smart-buttons {
+							   display: inline-block;
+							   margin-top: 10px;
+							   margin-bottom: 10px;
+							   min-width: 80%;
+							}
+							.paypalCommerce-buttons-container {
+							   width: 100%;
+							   display: inline-block;
+							   position: relative;
+							   z-index: 99;
+							}
+
+							@media screen and (max-width: 550px) {
+							   .paypalCommerce-smart-buttons {
+								  width: 100%;
+							   }
+							}
+							</style>
+                            {{#each cart.additional_checkout_buttons}}
+                                {{{this}}}
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                    {{#if cart.show_multiple_address_shipping}}
+                        <p>
+                            <a href="{{urls.checkout.multiple_address}}">
+                                {{lang 'cart.preview.checkout_multiple'}}
+                            </a>
+                        </p>
+                    {{/if}}
+                </div>
+            {{/if}}
+        </section>
+        <section class="productView">
+            <div class="whatNext">
+                <h5>{{lang 'cart.added_to_cart.what_next' num_products=cart.quantity}}</h5>
+            </div>
+
+            {{#with cart.added_item}}
+                <figure class="productView-image">
+                    <div class="productView-img-container">
+                        <img class="productView-image--cart lazyload"
+                            data-sizes="auto"
+                            src="{{cdn 'img/loading.svg'}}"
+                            data-src="{{getImage image (cdn ../theme_settings.default_image_product)}}"
+                            alt="{{image.alt}}"
+                            title="{{image.alt}}" />
+                    </div>
+                </figure>
+
+                <div class="productView-details">
+                    <p class="productView-title"><strong>
+                        {{name}}
+                    </strong></p>
+
+                    <div class="productView-brand">
+                        {{brand.name}}
+                    </div>
+
+                    <div class="productView-price">
+                        {{#or ../customer (if ../theme_settings.restrict_to_login '!==' true)}}
+                            {{quantity}} &times; {{price.formatted}}
+                        {{else}}
+                            {{> components/common/login-for-pricing}}
+                        {{/or}}
+                    </div>
+
+                    {{#each options}}
+					
+							{{#if (toLowerCase  value) '!=' 'none' }}
+							{{#if name '==' 'Fabrics' }}
+                        <dl class="productView-info  {{#if name '!='  'Seat/Back Slats Color'}}{{#replace ' '  (toLowerCase  name)}}{{else}}{{toLowerCase  name}}{{/replace}}{{else}}{{toLowerCase  name}}{{/if}}">
+                            <dt class="productView-info-name">
+                                {{name}}
+                            </dt>
+                            <dd class="productView-info-value">
+                                {{{value}}}
+								 </dd>
+                        </dl>
+						{{else}}
+						<dl class="productView-info  {{#if name '!='  'Seat/Back Slats Color'}}{{#replace ' '  (toLowerCase  name)}}{{else}}{{toLowerCase  name}}{{/replace}}{{else}}{{toLowerCase  name}}{{/if}}">
+                             <dt class="productView-info-name">
+                                {{name}}
+                            </dt>
+                            <dd class="productView-info-value">
+                                {{value}}
+                            </dd>
+                        </dl>
+						{{/if}}
+						{{/if}}
+                    {{/each}}
+                </div>
+            {{/with}}
+        </section>
+        
+        					<div class="preview-secured-logo">
+				<div><img src="https://store-xjh9r1tm85.mybigcommerce.com/content/footer-b2.png" /></div>
+				<div><img src="https://store-xjh9r1tm85.mybigcommerce.com/content/footer-b3.png" /></div>
+				<div><img src="https://store-xjh9r1tm85.mybigcommerce.com/content/footer-b1.png" /></div>
+			</div>
+    </div>
+
+    {{#if cart.suggested_products}}
+        <section class="suggestiveCart">
+            <h4>
+                {{lang 'cart.added_to_cart.you_might_also_like'}}&hellip;
+            </h4>
+
+            <ul class="productGrid">
+                {{#each cart.suggested_products}}
+                    <li class="product">
+                        {{> components/products/card settings=../settings hide_product_quick_view=true theme_settings=../theme_settings}}
+                    </li>
+                {{/each}}
+            </ul>
+        </section>
+    {{/if}}
+</div>
+	<script >
+
+	$(document).ready(function () {
+		var splitFabs = $('.fabrics .productView-info-value').text().trim().split("-");
+			if (splitFabs.length > 1) {
+				var str = splitFabs[0].toLowerCase().trim();
+				var res = str.replace(" ", "_");
+				var res1 = res.replace(" ", "_");
+				var res2 = res1.replace("'", "");
+
+
+			} else
+
+			{
+
+				var str =  $('.fabrics .productView-info-value').text().toLowerCase().trim();
+				var res = str.replace(" ", "_");
+				var res1 = res.replace(" ", "_");
+				var res2 = res1.replace("'", "");
+
+			}
+			
+			
+			
+
+			
+				newimg = "<img class='fab-img' style='height:100%;z-index:4;' src='https://cdn11.bigcommerce.com/s-n1keky2ro6/content/products/" + res2 + ".jpg' onerror='imgError(this);' />";
+					
+				$('.fabrics .productView-info-value').append(newimg);		
+				
+		$(".fab-img").on("error", function () {
+			$(this).hide();
+});			
+		
+				
+				
+				
+				
+				
+	});
+	</script>

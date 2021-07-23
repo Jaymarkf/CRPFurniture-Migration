@@ -1,0 +1,177 @@
+<!-- Request Quote -->
+<style>
+.container{padding:0;max-width:1600px}
+
+.container .page-content{max-width:1600px;}
+.footer .container{max-width:1400px;}
+</style>
+<div id="request-quote-container" class="request-quote-container"  style="width: 100%;">
+	<hr />
+	
+	<div class="request-quote-box"  style="width: 100%;">
+    <iframe id="request-quote-form" class="quote-form" src="/request-quote/" width="100%"  style=" border: 0; transition: height 0.3s ease 0s; height: auto;" ></iframe>
+	</div>
+	<div class="sending-box" style="display:none;">Sending your request... Please Wait</div>
+	<hr />	
+	
+	<script>
+		$(document).ready(function() {
+			var _styleDoc ="<style>" + `{{> store-custom/layout/form_style }}` + ".form-label{  margin-bottom: 1rem !important; } .select-input{ -webkit-appearance: listbox; -moz-appearance: listbox; appearance: listbox;} .form-field--success .select-input { -webkit-appearance: none; -moz-appearance: none; appearance: none; } .form-input{ height:3rem !important; padding: 10px; }</style>"; 
+
+            var f_contentBox = ".request-quote-box";
+            var f_iframeBox = "#request-quote-form";
+			var f_sendingBox = ".sending-box";
+
+
+			// render quote items
+			function _quoteItems(){
+					var LineItems ="";
+					var _textTrim ="";
+					$('table.cart .cart-list .cart-item').each(function( index, el){
+						_textTrim ="";
+						_textTrim += "\n [ Item " + (index+1) + " ] \n ---------------------";
+						$(this).find('.cart-item-title').each(function(index, el){
+							_textTrim += "\n Name:\t" + $(this).find('.cart-item-name').text().trim();
+							_textTrim += "\n SKU:\t" + $(this).find('.cart-item-sku').text().trim();
+							_textTrim += "\n Options: \n ";
+							$(this).find('.definitionList div').each(function(index, el){
+								_textTrim += "-"+ $(this).find('.definitionList-key').text().trim();
+								_textTrim += $(this).find('.definitionList-value').text().trim() + "\n";
+
+							});
+							_textTrim += " ";
+						});
+						_textTrim += "\n Price:\t" + $(this).find('.cart-item-info .cart-item-label:contains("Price")').closest('.cart-item-info').find('.cart-item-value').text(); 
+						_textTrim += "\n Qty:\t" + $(this).find('.cart-item-qty-input').val(); 
+						_textTrim += "\n Total:\t" + $(this).find('.cart-item-info .cart-item-label:contains("Total")').closest('.cart-item-info').find('.cart-item-value').text(); 
+						_textTrim += "\n ---------------------";
+						
+						LineItems += "\n" + _textTrim + "\n";
+					});
+					return LineItems;
+			}
+
+			$(f_contentBox).hide();
+            $(f_iframeBox).on( "load", function() {
+						var _iframeContent = $(f_iframeBox).contents();
+						_iframeContent.find('body').append(_styleDoc);
+						$(f_contentBox).show();
+						$(this).show();
+						$(this).height(_iframeContent.height()+200);
+						$(f_contentBox).hide(); 
+						$(f_sendingBox).hide(); 
+						
+						// append data
+						function _bulkData(){
+							_iframeContent.find('#contact_question').val(
+								"\n\nState:    " + _iframeContent.find('#contact_state option:selected').text() +
+								"\n\nZip Code:    " + _iframeContent.find('#contact_zipcode').val() + 
+								"\n\nComment:    " + _iframeContent.find('#contact_comment').val() + 
+								" \n\nQuote Item(s):\n\t" + _quoteItems()
+								); 			
+							_formValidation();	
+						}
+						
+						// validate form
+						function _formValidation(){
+							_validFlag = 0;
+							_submitBtn = _iframeContent.find('#contact-us-page .form-actions input');
+							
+							// input
+							_iframeContent.find('#contact-us-page form .required-field').each(function(index, el){
+								( $(this).val().length === 0 ) && _validFlag++;
+							});							
+							
+							// submit
+							(_validFlag > 0) ? _submitBtn.css('background-color','gray').prop( "disabled", true ) : _submitBtn.css('background','').prop( "disabled", false );
+						}
+						
+						// add dummy inputs
+						var _inputList = {
+								'contact_state'   : ['State','select'] ,
+								'contact_zipcode' : ['Zip Code','text'] ,
+								'contact_comment' : ['Comment','textarea']
+								};
+								
+						for (var key in _inputList) {
+							if (_inputList.hasOwnProperty(key)) {
+								if(_iframeContent.find('#'+key).length <= 0){ 
+									_newContent = '<div class="form-field"><label class="form-label" for="'+key+'">'+_inputList[key][0]+'</label>';
+									
+									if(_inputList[key][1] == "select") {
+										_newContent += `{{> store-custom/components/cart/common-obj/state }}`;
+									} 
+									else if(_inputList[key][1] == "textarea"){
+										_newContent += ' <textarea type="text" name="'+key+'" id="'+key+'" rows="5" cols="50" class="form-input"></textarea>';
+									}
+									else{ 
+										_newContent += '<input class="form-input" type="text" id="'+key+'" name="'+key+'" value="">';
+									}
+									
+									_newContent +='</div>';
+								
+									_iframeContent.find('#contact-us-page .form-field .form-input').last().parent('.form-field').after(_newContent);		
+								}
+							}
+						}
+						
+						// hide question area 
+						_iframeContent.find('#contact_question').parent('.form-field').hide();
+						
+						// add required checker
+						_iframeContent.find('#contact-us-page .form-field .form-input').not( "textarea" ).each(function( index ) {
+							$(this).addClass('required-field');
+							
+							if($(this).hasClass('required-field')){
+								if($(this).parent('.form-field ').find('.form-label small').length <= 0){
+									$(this).parent('.form-field ').find('.form-label').append("<small>Required</small>");
+								}
+							}
+						});
+						
+						// bind default style checker
+						_iframeContent.find('#contact-us-page .form-field .form-input').each(function( index ) {
+							$(this).bind( "input propertychange focusout", function() {
+								if( $(this).val().length === 0 ) { 
+									$(this).css('border', ($(this).hasClass('required-field')) ?  '1px solid #bd0202' : '' );
+									($(this).parent('.form-field').hasClass('form-field--success')) && $(this).parent('.form-field').removeClass('form-field--success');
+								}
+								else{
+									$(this).css('border', '1px solid #02b502'); 
+									(!$(this).parent('.form-field').hasClass('form-field--success')) &&$(this).parent('.form-field').addClass('form-field--success');
+								}
+
+								_bulkData();
+							});
+						});
+						
+						// bind submit button
+						if(_iframeContent.find('#contact-us-page .form-actions input').length > 0){
+							_formValidation();
+                            _iframeContent.find('#contact-us-page .form-actions input').bind( "click", function() {
+								$(f_contentBox).hide();   
+								$(f_sendingBox).show();  
+								$([document.documentElement, document.body]).animate({
+									scrollTop: $("#request-quote-container").offset().top - 250
+								}, 1000);		
+                            }); 
+                        }
+						
+						// bind success response							
+                        if(_iframeContent.find('#contact-us-success').length > 0){
+                           _iframeContent.find('#contact-us-success').html(" We've received your request and will respond as soon as we can. <br> Thank you!");
+                            $(f_iframeBox).height("auto");
+							$(f_sendingBox).hide();  
+                            $(f_contentBox).fadeIn("normal");
+                        }else{
+                            $(f_contentBox).fadeIn("slow");
+                        }
+            });
+              
+        });
+	
+	
+	</script>
+	
+
+</div>

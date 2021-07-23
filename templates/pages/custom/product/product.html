@@ -1,0 +1,65 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{#partial "page"}}
+<style>
+.breadcrumbs{padding:0;text-align:left;margin-bottom:20px;}
+</style>
+
+	<div id="gr-dropzone-product_banner_top" class="product_banner b-top"></div>
+
+
+    <div itemscope itemtype="http://schema.org/Product">
+
+        <div class="container prod-page" >
+		        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+        {{#each product.shipping_messages}}
+            {{> components/common/alert-info message}}
+        {{/each}}
+		<div style="display:flex">
+            {{> store-custom/components/products/product-view schema=true  }}
+			
+
+		</div>
+			
+		</div>	
+        </div>
+
+
+
+        
+        {{#if product.similar_by_views}}
+            {{#unless theme_settings.customer_viewed_products_tab}}
+                <div id="tab-related">
+                    <div class="grid-bg">
+                        <div class="container">
+                            <h3 class="main-heading uppercase center"><strong>{{lang 'products.similar_by_views'}}</strong></h3>
+                            {{> store-custom/components/products/similar-by-views products=product.similar_by_views columns=6}}
+                        </div>
+                    </div>
+                </div>
+            {{/unless}}
+        {{/if}}
+        
+        {{#if settings.show_product_reviews}}
+            {{#gt product.reviews.total 0}}
+                <div class="container">
+                    <h3 class="main-heading uppercase" id="reviews-accordion">Reviews</h3>
+                    {{> store-custom/components/products/reviews reviews=product.reviews product=product urls=urls}}
+                </div>
+            {{/gt}}
+        {{/if}}
+	
+	 <div id="gr-dropzone-product_banner_bottom" class="product_banner b-bottom"></div>
+	
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale_name }}">
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ resourceHints }}}
+        {{{ head.meta_tags }}}
+        {{{ head.config }}}
+        {{#block "head"}} {{/block}}
+
+        <link href="{{ head.favicon }}" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <script>
+            {{!-- Change document class from no-js to js so we can detect this in css --}}
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+        </script>
+        {{!-- Load Lazysizes script ASAP so images will appear --}}
+        <script>
+            {{!-- Only load visible elements until the onload event fires, after which preload nearby elements. --}}
+            window.lazySizesConfig = window.lazySizesConfig || {};
+            window.lazySizesConfig.loadMode = 1;
+        </script>
+        <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js'}}"></script>
+
+        {{ getFontsCollection }}
+        {{{stylesheet '/assets/css/theme.css'}}}
+		{{{stylesheet '/assets/css/store-custom-css.css'}}}
+
+        {{{head.scripts}}}
+
+        {{~inject 'themeSettings' theme_settings}}
+        {{~inject 'genericError' (lang 'common.generic_error')}}
+        {{~inject 'maintenanceMode' settings.maintenance}}
+        {{~inject 'urls' urls}}
+        {{~inject 'secureBaseUrl' settings.secure_base_url}}
+        {{~inject 'cartId' cart_id}}
+        {{~inject 'template' template}}
+        
+        {{#if page_type '===' 'product'}}
+            {{> components/common/facebook-like}}
+        {{else if page_type '===' 'blog' }}
+            {{> components/common/facebook-like}}
+        {{else if page_type '===' 'blog_post' }}
+            {{> components/common/facebook-like}}
+        {{/if}}
+
+        <script>
+            var theme_settings = {
+                show_fast_cart: {{theme_settings.show_fast_cart}},
+                linksPerCol: {{theme_settings.nav-links-per-col}},
+            };
+        </script>
+     
+        <!-- custom links -->
+		<script src="{{cdn 'assets/jquery.min.js'}}"></script>
+		<meta name="google-site-verification" content="Sa93nxtLEQ-ZlBilWMaDcnv_A4c_Yynu94hYOJr0H_k" />
+		<script src="https://kit.fontawesome.com/4a01e5c349.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
+
+        {{> components/common/header }}
+        {{> components/common/body }}
+        {{> components/common/footer }}
+		
+		{{> store-custom/layout/base-script }}
+
+
+		<!--  Contact Form iFrame Modals Script -->	
+		<div id="modal-iFrame-content" class="modal" data-reveal>
+            <div class="modal-header">
+                <h2 class="modal-header-title">Contact Form</h2>
+                <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
+                <span aria-hidden="true">&#215;</span>
+                </a>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+				<div class="loading-form" style="display:none; text-align:center;">Loading Form please wait...</div>
+                <div class="iFrame-box"  style="max-width: 500px; display: inline-block;width: 100%;">
+                    <iframe id="modal-iFrame-form" class="iFrame-form" src="" width="100%"  style=" border: 0; transition: height 0.3s ease 0s; height: auto; display: none;"></iframe>
+                </div>
+		   </div>
+        </div>	
+		
+		        <script>
+			 var _styleDoc ="<style>@media only screen and (min-width: 30px){ 		footer, header, .breadcrumbs ,.footer-newsletter, .page-heading, .page-heading + p ,  .page-heading + p +p , .page-heading + p +p + p { display:none!important; } body{padding-top:0!important; } .body{ margin-top: 0 !important;}   .form-label{ text-align:left; }  .form-row--half .form-field { width: 100%; } .form-field { width: 100%; } .g-recaptcha{ text-align:center; } .g-recaptcha > div { display:inline-block; }  .form-field { margin: 0 0 1rem; }  .body-style-desktop{ padding-top:0 !important; } .body-style-desktop-slim{ padding-top:0  !important;}#tidio-chat {display:none!important; }}</style>"; 
+		
+		
+            function inIframe () {
+                try {  return window.self !== window.top;} catch (e) { return true;}
+            }
+            
+            $(document).ready(function(){
+                if(inIframe() == true){
+                    $(this).contents().find('body').append(_styleDoc);
+                }
+            });
+        
+		
+			var _scroll_once = 0;
+			function Scrolldown() {window.scroll(0,1); }
+			window.onload = Scrolldown; 
+            $(document).ready(function() {
+                // on-click
+                var f_eventAction = ".modal-iFrame-action";
+                var f_contentBox = ".iFrame-box";
+                var f_iframeBox = "#modal-iFrame-form";
+				var f_loadingForm = ".loading-form";
+               
+                $(window).scroll(function(){
+					if(_scroll_once ==0){
+						_scroll_once=1;
+						$( f_eventAction ).each(function(index) {
+							if($("iframe#" + $(this).attr('href').replace(/\//g, "")).length <= 0){  
+								$(f_iframeBox).clone().attr({'src':$(this).attr('href'),'id':$(this).attr('href').replace(/\//g, ""),'title':$(this).text()}).appendTo(f_contentBox);
+							}
+						});
+					}
+                });
+                                          
+                $(f_eventAction).click(function(){
+					$('.iFrame-form').each(function(index) {  $(this).hide(); });
+					s_iframeBox = "iframe#" + $(this).attr('href').replace(/\//g, "");
+                    $(f_contentBox).hide();
+					$(f_loadingForm).show();
+					$(s_iframeBox).attr('src',$(this).attr('href'));
+					$('#modal-iFrame-content .modal-header-title').text($(s_iframeBox).attr('title'));
+
+                    $(s_iframeBox).on( "load", function() {
+						$(f_contentBox).show();
+						$(this).show();
+						$(this).height($(this).contents().height());
+						$(this).contents().find('body').append(_styleDoc);
+						$(f_contentBox).hide(); 
+						
+						
+						if( $(this).contents().find('#contact_sku').length > 0){  
+                                $(this).contents().find('#contact_sku').val("{{ product.sku }}");
+                        }
+						
+						if( $(this).contents().find('.form-actions input').length > 0){
+                            $(this).contents().find('.form-actions input').bind( "click", function() {
+								$(f_contentBox).hide();    
+                            }); 
+                        }
+													
+                        if( $(this).contents().find('#contact-us-success').length > 0){
+                            $(this).contents().find('#contact-us-success').html(" We've received your request and will respond as soon as we can. <br> Thank you!");
+                            $(s_iframeBox).height("auto");
+							$(f_loadingForm).hide();
+                            $(f_contentBox).fadeIn("normal");
+                        }else{
+							$(f_loadingForm).hide();
+                            $(f_contentBox).fadeIn("slow");
+                        }
+                    });
+                });
+            });
+        </script>
+
+		<!--  Contact Form iFrame Modals Script -->	
+		
+		
+        <!-- custom-page-class -->
+        <script>
+            var pathname = window.location.pathname.replace(/\//g, ""); 
+            $('body').addClass(pathname+"_css");
+        </script>
+        <!-- custom-page-class -->
+        
+
+        <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
+        <script src="{{cdn 'assets/dist/theme-bundle.main.js'}}"></script>
+        <script>
+            {{!-- Exported in app.js --}}
+            window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
+        </script>
+
+
+        {{{footer.scripts}}}
+    </body>
+</html>

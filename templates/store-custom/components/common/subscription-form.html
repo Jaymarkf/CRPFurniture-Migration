@@ -1,0 +1,23 @@
+
+
+
+<div class="newsletter-header">
+	<h2>Your Inbox is Buzzing!</h2>
+	<p>with Special Savings, Discounts <br>& New Products!</p>
+</div>
+<form class="form footer-newsletter" action="{{urls.subscribe.action}}" method="post">
+
+    <fieldset class="form-fieldset">
+        <input type="hidden" name="action" value="subscribe">
+        <input type="hidden" name="nl_first_name" value="bc">
+        <input type="hidden" name="check" value="1">
+        <div class="form-field">
+            <label class="form-label is-srOnly" for="nl_email">{{lang 'common.email_address'}}</label>
+            <div class="form-prefixPostfix wrap">
+                <input class="form-input" id="nl_email" name="nl_email" type="email" value="{{customer.email}}" placeholder="{{lang 'newsletter.email_placeholder'}}">
+				
+				<button class="newsletter-btn">Sign Up Now</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

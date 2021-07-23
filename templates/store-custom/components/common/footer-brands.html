@@ -1,0 +1,36 @@
+ {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+ 
+ <article class="footer-info-col footer-info-dropdown footer-info-col--small" data-section-type="footer-brands">
+                    <h5 class="footer-info-heading">
+                        {{lang 'footer.brands'}}
+                        <i class="icon" aria-hidden="true">
+                            <svg><use xlink:href="#icon-downselector" /></svg>
+                        </i>
+                    </h5>
+                    <ul class="footer-info-list">
+                        <!--
+                        {{#each shop_by_brand}}
+                            <li>
+                                <a href="{{url}}">{{name}}</a>
+                            </li>
+                        {{/each}}
+                         <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+                        
+                        -->
+                        {{#each categories}}
+                            {{#if name '===' 'Collections' }}
+                                {{#if children}}
+                                    {{#each (limit children 8 )}}
+                                       <li>
+                                            <a href="{{url}}">{{name}}</a>
+                                        </li>
+                                    {{/each}}
+                                {{/if}}
+                            {{/if}}    
+                        {{/each}}
+                         <li><a href="/collections/">{{lang 'common.view_all'}}</a></li>
+                        
+                    </ul>
+</article>
+
+{{/and}}

@@ -1,0 +1,39 @@
+<style>
+.card .card-figure{border:none}
+.card-figcaption{border:none;bottom: 0;top: unset;}
+.card{position:relative}
+</style>
+
+<ul class="productGrid productGrid--maxCol5" data-product-type="featured" {{#if settings.data_tag_enabled}} data-list-name="Featured Products" {{/if}}>
+    {{#each products}}
+		{{#or (if sku '===' 'C1EL120SM') (if sku '===' 'C1PORTLP')  (if sku '===' 'C1EL120SM + C1ELCT21') (if sku '===' 'C1CHCS')}}
+        <li class="product {{sku}}">
+            {{>components/products/card1 settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+        </li>
+		{{/or}}
+    {{/each}}
+	    <li  onclick="location.href='/grills/'"  class="product viewall" style="position:relative;background:#000;color:#fff;cursor:pointer;" >
+       <div>
+	   <h3 style="color:#fff">View All</h3> 
+	   <h2 style="color:#fff">Grills<h2>
+	   </div>
+	   
+    </li>
+</ul>
+
+<ul class="productGrid productGrid--maxCol5" data-product-type="featured" {{#if settings.data_tag_enabled}} data-list-name="Featured Products" {{/if}}>
+    {{#each products}}
+		{{#or (if sku '===' 'CCVR36-BI') (if sku '===' 'CBRIQ28')  (if sku '===' 'CCVR42-BI') (if sku '===' 'C2BRIQ36')}}
+        <li class="product {{sku}}">
+            {{>components/products/card1 settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+        </li>
+		{{/or}}
+    {{/each}}
+    <li  onclick="location.href='/parts/'"  class="product viewall" style="position:relative;background:#000;color:#fff;cursor:pointer;" >
+       <div>
+	   <h3 style="color:#fff">View All</h3> 
+	   <h2 style="color:#fff">Parts<h2>
+	   </div>
+	   
+    </li>
+</ul>
