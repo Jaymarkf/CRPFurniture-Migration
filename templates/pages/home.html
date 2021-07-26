@@ -32,6 +32,24 @@ blog:
     {{/each}}
 	
 <style>
+.widget-flex{position:relative;width:100%;}
+.widget-row{width:100%;display:flex;justify-content: space-between;align-items: center;position:relative;}
+.widget-item{padding:15px;position:relative;}
+.text{
+	padding-left:28px;
+	padding-right:28px;
+	margin-left:15px;
+	margin-top:40px;
+	position:absolute;	
+	top:0;
+	left:0;
+	font-weight: bold;
+	font-size:34px;
+	text-transform: uppercase;
+	background: rgba(31, 91, 163, 0.8);
+	color:white;
+}
+
 .banners{padding:0;display:inline-block;width:100%;}
 .banner {padding: 0;display:inline-block}
 
@@ -46,9 +64,9 @@ blog:
 .home-side li{    padding: 10px !important;
     margin-bottom: 0px;
     border-bottom: 1px solid #ccc;}
-.home-side li a{color: #3d3d3d;font-size:15px}
+.home-side li a{color: #3d3d3d;font-size:12px;font-weight:600;}
 
- .home-side li a:hover{   color: #1587c6;}
+ .home-side li a:hover{   color: #3bae87;}
 
 .home-about{margin-top:20px;text-align: left;}
 .home-about h2{
@@ -66,9 +84,9 @@ blog:
     content: '';
     bottom: 0;
     position: absolute;
-    width: 30%;
+    width: 10%;
     height: 3px;
-    background: #6aaf0a;
+    background: #3bae87;
 }
 .page-sidebar {
     padding: 10px 20px 20px 20px;
@@ -161,45 +179,96 @@ blog:
         <div class="container-home">
 			
 			 <aside class="page-sidebar home-side">	
-				<h3>PROMOTIONS:</h3>
+				<!-- <h3>PROMOTIONS:</h3>
 				<ul class="categoryGrid" data-product-type="categories">
 					<li><a href="/outdoor-furniture-clearance.html">Clearance Sale</a></li>
 					<li><a href="/sales/">Sales</a></li>
-				</ul>	
+				</ul>	 -->
 
 				
 
 				<h3>CATEGORIES:</h3>
 				
-					<ul class="categoryGrid" data-product-type="categories">
-						<li><a href="/adirondack-chairs.html">Adirondack Chairs</a></li>	
-						<li><a href="/deep-seating-furniture.html">Deep Seating</a></li>	
-						<li><a href="/chaise-lounge-chairs.html">Lounge Chairs</a></li>	
-						<li><a href="/polycategories/dining-furniture/dining-chairs.html">Dining Chairs</a></li>	
-						<li><a href="/counter-outdoor-furniture/counter-chairs.html">Counter Chairs</a></li>	
-						<li><a href="/outdoor-bar-furniture/bar-chairs.html">Bar Chairs</a></li>	
-						<li><a href="/polycategories/chairs-seating/patio-stools.html">Patio Stools</a></li>	
-						<li><a href="/polycategories/chairs-seating/rocking-chairs.html">Rocking Chairs</a></li>	
-						<li><a href="/polycategories/chairs-seating/gliders.html/">Gliders</a></li>	
-						<li><a href="/polycategories/chairs-seating/porch-swings.html">Porch Swings</a></li>	
-						<li><a href="/polycategories/dining-furniture/dining-tables.html">Dining Tables</a></li>	
-						<li><a href="/outdoor-bar-furniture/bar-tables.html">Bar Tables</a></li>	
-						<li><a href="/counter-outdoor-furniture/counter-tables.html">Counter Tables</a></li>	
-						<li><a href="/tables/side-tables/">Side Tables</a></li>	
-						<li><a href="/tables/coffee-tables/">Coffee Tables</a></li>	
-						<li><a href="/tables/conversation-tables/">Conversation Tables</a></li>	
-						<li><a href="">Picnic Tables</a></li>	
-						<li><a href="/outdoor-furniture-accessories.html">Accessories</a></li>	
-					</ul>	
-
-
-				<h3>SERVICES:</h3>
-					<ul class="categoryGrid" data-product-type="categories">
-						<li><a href="/contract">To The Trade / Contract</a></li>
-					</ul>						
+				<ul class="categoryGrid" data-product-type="categories">
+					<li><a href="##">Adirondack Chairs</a></li>	
+					<li><a href="#">Adirondack Rockers</a></li>	
+					<li><a href="#">Dining</a></li>	
+					<li><a href="#">Dining Chairs</a></li>	
+					<li><a href="#">Bar</a></li>	
+					<li><a href="#">Bar Stools</a></li>	
+					<li><a href="#">Adirondack Footstools</a></li>	
+					<li><a href="#">Footstools</a></li>	
+					<li><a href="#">Benches</a></li>	
+					<li><a href="#">Lounges</a></li>	
+					<li><a href="#">Pillows</a></li>	
+					<li><a href="#">Dining Tables</a></li>	
+					<li><a href="#">Picnic Table</a></li>	
+					<li><a href="#">Deep Seating</a></li>	
+					<li><a href="#">Counter</a></li>	
+					<li><a href="#">Counter Chairs</a></li>	
+					<li><a href="#">Counter Tables</a></li>	
+					<li><a href="#">Coffee Tables</a></li>	
+					<li><a href="#">Tete-a-Tete</a></li>	
+					<li><a href="#">Bar Tables</a></li>	
+					<li><a href="#">Umbrellas</a></li>	
+					<li><a href="#">Collections</a></li>	
+				</ul>					
              </aside>
             <main class="page-content" id="product-listing-container">
 			<div class="malibu-left-nav"><p>Categories</p></div>
+			<div class="widget-flex">
+				<div class="widget-row">
+				
+					<div class="widget-item">
+						<a href="#">
+							<img src="{{cdn 'assets/img/CRP-New-Products-For-2020.jpg'}}" alt="">
+							<div class="text">New For 2020</div>
+						</a>
+					</div>
+				
+				
+					<div class="widget-item">
+						<a href="#">
+							<img src="{{cdn 'assets/img/CRP-Deep-Seating_3-min.png'}}" alt="">
+							<div class="text">Deep Seating</div>
+						</a>
+					</div>
+				
+				</div>
+				<div class="widget-row">
+				
+					<div class="widget-item">
+						<a href="#">
+							<img src="{{cdn 'assets/img/CRP-Bar-Height-min.png'}}" alt="">
+							<div class="text">Bar Height</div>
+						</a>
+					</div>
+				
+				
+					<div class="widget-item">
+						<a href="#">
+							<img src="{{cdn 'assets/img/CRP-Adirondacks-min.png'}}" alt="">
+							<div class="text">Adirondacks</div>
+						</a>
+					</div>
+				
+				</div>
+				<div class="widget-row">
+					<div class="widget-item">
+						<a href="#">
+							<img src="{{cdn 'assets/img/CRP-Dinning-min.png'}}" alt="">
+							<div class="text">Dining</div>
+						</a>
+					</div>
+				
+					<div class="widget-item">
+						<a href="#">
+							<img src="{{cdn 'assets/img/CRP-Chaise-Lounge-min.png'}}" alt="">
+							<div class="text">Chaise Lounge</div>
+						</a>
+					</div>
+				</div>
+			</div>
 			{{#if banners.top}}
 				<div class="banners" data-banner-location="top">
 					{{#each (limit banners.top_metadata 1)}}
@@ -214,25 +283,19 @@ blog:
    			<!-- <a style="display:block;width:100%;text-align:center;" href="/contract/">
 				<img class="__mce_add_custom__"  title="Pro Services" src="https://cdn11.bigcommerce.com/s-n1keky2ro6/content/pro-service-banner.png" alt="pro-services-img.png" />
 			</a>       -->
-			
-
-
+			<div class="home-about">
+				<h2>About C.R. Plastics</h2>
+				<p>
+				What started out as a compassionate goal for saving the environment has evolved into a passionate pursuit for innovation and design.<br><br>
+				In 1994, Jamie Bailey, co-owner and co-founder of C.R. Plastic Products Inc., started manufacturing recycled plastic furniture in an effort to divert used plastic away from landfills, and limit unnecessary felling of trees. His goal was to make a product that would provide the look and warmth of wood, without the typical shortcomings associated with maintaining wood furniture. The proprietary extrusion process discovered, improved & customized by Jamie, produces a unique plastic lumber that won’t mold, rot, splint or crack. The process creates a superior fit and finish, including a beautiful textured-look similar to the grain of wood, and smooth rounded edges for enhanced comfort. With an added automotive-grade, UV stabilizer, each piece is guaranteed to maintain its beautiful colour for years, without the need of staining or painting.
+				<br><br><hr>
+				Since perfecting the comfort and design of our flagship Adirondack chairs, we have expanded our furniture into three distinct lines. The Generation Line offers timeless designs modeled after the classic Adirondack look. The St. Tropez line offers fresh options for the urban outdoors with its stunning, contemporary look. The Stratford Deep Seating Collection is extremely comfortable and stylish with its unique bullnose finish and weather-proof Sunbrella fabric cushions. Our newest line, the island inspired Bay Breeze Coastal Collection has sturdy horizontal back slats with sleek new curved extrusions that define this bold new look.
+				<br><br>
+				With a multitude of options for everything from outdoor dining to casual seating, we make something for everyone!	
+				</p>
+			</div>
             </main>
         </div>
-			
-			<div class="home-about">
-				<h2>About Patio Express</h2>
-				<p>
-					Patio Express is environmentally friendly and manufactured from HDPE milk jugs and water bottles recycled from landfills every year. 
-					We only use purified recycled plastic that is made with color pigments and Ultra-Violet (UV) stabilizers which result in colorful, maintenance free, 
-					and eco-friendly products. Our unique and innovative outdoor furniture is comfortable, sustainable, and stylish providing just the right decor for your home decorating needs.
-					<br><br>
-					Whether you need new outdoor chairs or benches, you will find that every item in our collection has been carefully manufactured to reflect the highest 
-					standards in the industry. You can take advantage of our best price guarantee to enjoy phenomenal prices on the best patio furniture avaialable online.
-				
-				</p>
-			
-			</div>
     </div>
   
 
@@ -277,42 +340,34 @@ blog:
 	<!-- Before Footer -->
 	<div id="gr-dropzone-before_footer"></div>
 <div class="sidebar-modal sidecat-scroll">	
-				<h3>PROMOTIONS:</h3>
-				<ul class="categoryGrid" data-product-type="categories">
-					<li><a href="/outdoor-furniture-clearance.html">Clearance Sale</a></li>
-					<li><a href="/sales/">Sales</a></li>
-				</ul>	
-
+				
 				
 
 				<h3>CATEGORIES:</h3>
 				
-					<ul class="categoryGrid" data-product-type="categories">
-						<li><a href="/adirondack-chairs.html">Adirondack Chairs</a></li>		
-						<li><a href="/deep-seating-furniture.html">Deep Seating</a></li>	
-						<li><a href="/chaise-lounge-chairs.html">Lounge Chairs</a></li>	
-						<li><a href="/polycategories/dining-furniture/dining-chairs.html">Dining Chairs</a></li>	
-						<li><a href="/counter-outdoor-furniture/counter-chairs.html">Counter Chairs</a></li>	
-						<li><a href="/outdoor-bar-furniture/bar-chairs.html">Bar Chairs</a></li>	
-						<li><a href="/polycategories/chairs-seating/patio-stools.html">Patio Stools</a></li>	
-						<li><a href="/polycategories/chairs-seating/rocking-chairs.html">Rocking Chairs</a></li>	
-						<li><a href="/polycategories/chairs-seating/gliders.html/">Gliders</a></li>	
-						<li><a href="/polycategories/chairs-seating/porch-swings.html">Porch Swings</a></li>	
-						<li><a href="/polycategories/dining-furniture/dining-tables.html">Dining Tables</a></li>	
-						<li><a href="/outdoor-bar-furniture/bar-tables.html">Bar Tables</a></li>	
-						<li><a href="/counter-outdoor-furniture/counter-tables.html">Counter Tables</a></li>	
-						<li><a href="/tables/side-tables/">Side Tables</a></li>	
-						<li><a href="/tables/coffee-tables/">Coffee Tables</a></li>	
-						<li><a href="/tables/conversation-tables/">Conversation Tables</a></li>	
-						<li><a href="">Picnic Tables</a></li>	
-						<li><a href="/outdoor-furniture-accessories.html">Accessories</a></li>	
-					</ul>	
+				<ul class="categoryGrid" data-product-type="categories">
+					<li><a href="/adirondack-chairs.html">Adirondack Chairs</a></li>		
+					<li><a href="/deep-seating-furniture.html">Deep Seating</a></li>	
+					<li><a href="/chaise-lounge-chairs.html">Lounge Chairs</a></li>	
+					<li><a href="/polycategories/dining-furniture/dining-chairs.html">Dining Chairs</a></li>	
+					<li><a href="/counter-outdoor-furniture/counter-chairs.html">Counter Chairs</a></li>	
+					<li><a href="/outdoor-bar-furniture/bar-chairs.html">Bar Chairs</a></li>	
+					<li><a href="/polycategories/chairs-seating/patio-stools.html">Patio Stools</a></li>	
+					<li><a href="/polycategories/chairs-seating/rocking-chairs.html">Rocking Chairs</a></li>	
+					<li><a href="/polycategories/chairs-seating/gliders.html/">Gliders</a></li>	
+					<li><a href="/polycategories/chairs-seating/porch-swings.html">Porch Swings</a></li>	
+					<li><a href="/polycategories/dining-furniture/dining-tables.html">Dining Tables</a></li>	
+					<li><a href="/outdoor-bar-furniture/bar-tables.html">Bar Tables</a></li>	
+					<li><a href="/counter-outdoor-furniture/counter-tables.html">Counter Tables</a></li>	
+					<li><a href="/tables/side-tables/">Side Tables</a></li>	
+					<li><a href="/tables/coffee-tables/">Coffee Tables</a></li>	
+					<li><a href="/tables/conversation-tables/">Conversation Tables</a></li>	
+					<li><a href="">Picnic Tables</a></li>	
+					<li><a href="/outdoor-furniture-accessories.html">Accessories</a></li>	
+				</ul>		
 
 
-				<h3>SERVICES:</h3>
-					<ul class="categoryGrid" data-product-type="categories">
-						<li><a href="/contract/">To The Trade / Contract</a></li>
-					</ul>	
+
 <p class="malibu-left-close">X</p>					
              </div>
 	<script>
