@@ -755,8 +755,8 @@ footer .socialLinks{
     position: absolute;
     right: -50px;
     top: 0;
-    background: #6aaf0a;
-    border: 1px solid #6aaf0a;
+    background: #3bae87;
+    border: 1px solid #3bae87;
 }
 .quickSearchWrap .form-button .icon,
 .navPages-quickSearch .form-button .icon{
@@ -914,6 +914,8 @@ footer .socialLinks{
 .footer-info:after{display: none;}
 
 .footer-info{
+    position:relative;
+    width:100%;
     display: flex;
     flex-flow: row wrap;
     margin: 0 -15px;
@@ -988,7 +990,7 @@ footer a:hover{
 
 .footer-payment-icons{
     height: auto;
-    margin: 0 -15px;
+    // margin: 0 -15px;
 }
 .footer-payment-icons .footer-payment-icon{
     width: 50px;
