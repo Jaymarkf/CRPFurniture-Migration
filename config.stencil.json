@@ -11,7 +11,9 @@
       "privacy-policy.html" : "/privacy-policy",
       "crp-benefits.html" : "/crp-benefits"
     },
-    "product": {}
+    "product": {
+      "product-not-available.html" : "/smith-journal-13"
+    }
   },
   "normalStoreUrl": "https://brandster-inc-5.mybigcommerce.com/",
   "port": "3000"

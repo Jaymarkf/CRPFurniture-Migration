@@ -67,9 +67,11 @@
     <ul class="navPages-list navPages-mega navPages-mainNav">
 		    {{#each categories}}
 				{{#if name '!=' 'Clearance Sale'}}
-					<li class="navPages-item">
+					{{#and (if name '!=' 'Outdoor') (if name '!=' 'New for 2020 Products')}}
+                    <li class="navPages-item">
 						{{> components/common/navigation-list}}
 					</li>
+                    {{/and}}
 				{{/if}}
 			{{/each}}
 		

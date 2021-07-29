@@ -1031,3 +1031,24 @@ div#review_header{
 .page-content .page-content--centered{
 	margin-top:50px;
 }
+
+//productView price for availability.
+	.productView-price{
+		a.btn-success{
+			background-color: #3bae87;
+			color: white;
+			padding: 10px;
+			font-weight: 600;
+			border-radius: 5px;
+			@media(max-width:1403px){
+				font-size:16px;
+			}
+			@media(max-width:883px){
+				font-size:14px;
+			}
+		}
+	}
+	//merchat reviews add some space between shopper approved and verifed buyer
+	div#sa_review_section{
+		margin-top:100px;
+	}
