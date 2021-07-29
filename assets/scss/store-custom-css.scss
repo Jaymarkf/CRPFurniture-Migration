@@ -12,7 +12,10 @@ html{font-size:15px;}
 //------------------------------------------------------------------------------
 // HEADER
 //------------------------------------------------------------------------------
-	.header_top_phone,.header_top_phone a{color:#6aaf0a !important;}
+	.header_top_phone,.header_top_phone a{color:#3d3d3d !important;}
+	.header_top_phone a:hover{
+		color:#3bae87 !important;
+	}
 	.navUser-item--cart .navUser-action{display: flex;align-items: center;position:relative;}
 	.cetner-align{text-align:center;margin: 0 auto;}
 	.cetner-align h5{margin:0;color:#000;text-transform:none;font-size: 1rem;line-height: 1.3;letter-spacing: 0;font-weight: 700;}
@@ -62,7 +65,7 @@ html{font-size:15px;}
 	.navUser-item:hover svg, .navUser-item:hover g{fill: #6aaf0a;color: #6aaf0a;stroke: #fff;}
     .navPage-subMenu > ul{padding:10px 0;}
 .left-align p{margin:0;font-weight:normal;	}	
-.left-align p b{color:#6aaf0a;}
+.left-align p b{color:#3bae87;}
 .navPage-childList-action.navPages-action{
 	color:#4c5154;
 	padding:0 2rem 0 1.5625rem;
@@ -815,7 +818,7 @@ html{font-size:15px;}
 .custom-page.contact-us #contact-us-page .form-field{margin: 0 0 25px;}
 
 .custom-page.contact-us #contact-us-page textarea{height:6rem}
-.custom-page.contact-us  #contact-us-page .form-actions .button{width:100%;margin:0;background-color: #6aaf0a;color: #fff;border:1px solid #6aaf0a}
+.custom-page.contact-us  #contact-us-page .form-actions .button{width:100%;margin:0;background-color:#3bae87;color: #fff;border:1px solid #6aaf0a}
 
 
 
@@ -823,7 +826,7 @@ html{font-size:15px;}
 
 
 
-.custom-page.contact-us  #contact-us-page .form-label{color: #6aaf0a !important;
+.custom-page.contact-us  #contact-us-page .form-label{color: #3bae87 !important;
     font-size: 14px;
     padding: 5px 0 !important;
     width: 100% !important;
@@ -834,7 +837,7 @@ html{font-size:15px;}
 
 .custom-page.contact-us .quick-contact {
     width: 100%;
-    color: #6aaf0a;
+    color: #3bae87;
     font-size: 18px;
     font-weight: 800;
     text-transform: uppercase;
@@ -843,7 +846,7 @@ html{font-size:15px;}
 }
 
 .custom-page.contact-us .quick-contact span {
-    border-bottom: 2px solid #6aaf0a;
+    border-bottom: 2px solid #3bae87;
     padding-right: 50px;
     padding-bottom: 5px;
 }
@@ -905,3 +908,126 @@ html{font-size:15px;}
 
 
 #request-free-catalog-price-list .og_frame_container{display:none;}
+
+
+//custom css like bootstrap
+.text-left{
+	text-align:left;
+}
+.text-right{text-align:right;}
+.text-center{
+	text-align:center;
+}
+.flex-column{
+	flex-direction: column;
+}
+.row{
+	width:100%;
+	display:block;
+}
+.d-flex{
+	display:flex;
+}
+.justify-content-center{
+	justify-content: center;
+}
+.footer-title{
+	font-size:36px;
+	padding: 27px 79px;
+	border-bottom:2px solid #3bae87;
+}
+
+.widget-flex{
+
+	.text{
+		@media(max-width:973px){
+			font-size:25px;
+		}
+		@media(max-width:660px){
+			font-size:22px;
+		}
+		@media(max-width:607px){
+			font-size:3vw;
+		}
+		@media(max-width:462px){
+			font-size:2.5vw;
+		}
+	}
+}
+
+.container-static{
+	margin:0 200px;
+	h3{
+		color:#3bae87;
+	}
+	@media(max-width:1024px){
+		margin:0 50px;
+	}
+	@media(max-width:991px){
+		margin:0 5px;
+	}
+
+}
+
+
+div#review_header{
+	display:none;
+}
+
+//overide pro services css 
+.crp-pro-services-account{
+	margin-bottom:100px !important;
+
+	.why-apply{
+		background-color: #1c457d !important;
+	}
+	
+}
+//header overide
+.popup_frame_sticky{
+	text-align: center;
+    padding: 8px;
+    box-shadow: 1px 7px 15px 0px #848181;
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+    width: 100%;
+	top:-200%;
+	transition: all 0.4s;
+	#covid-19-top{
+		color:red;
+	}
+	.close{
+		float: right;
+		font-size: 30px;
+		position: relative;
+		bottom: 10px;
+		height: 0;
+		cursor:pointer;
+		font-weight:500;
+		&:hover{
+			color:red;
+		}
+	}
+}
+
+.custom-header-top{
+	padding:5px 20px;
+	a:hover{
+		color:#3bae87;
+	}
+}
+.page .page--category section.page--content p img{
+	text-align:center;
+}
+
+//hover buttons default overide
+.button--primary:hover{
+	background-color:#3bae87;
+	border:1px solid #3bae87;
+}
+
+//subscribe .page
+.page-content .page-content--centered{
+	margin-top:50px;
+}

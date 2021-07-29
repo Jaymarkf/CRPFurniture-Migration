@@ -508,7 +508,7 @@
             "phone": "Phone Number",
             "order": "Order Number",
             "rma": "RMA Number",
-            "question": "Comments/Questions",
+            "question": "Message",
             "submit": "Submit Form",
             "successful": "We've received your feedback and will respond shortly if required. <a href=\"{shopPath}\">Continue</a>."
         },

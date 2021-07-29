@@ -111,7 +111,11 @@ blog:
     font-size: 14px;
     font-weight: 500;
     padding: 10px;
-    margin: 10px 0;	}
+    margin: 10px 0;
+	position:relative;
+	z-index:99;
+	cursor:pointer;
+}
 
 .malibu-left-nav p{margin:0;padding:0;}
 .sidebar-modal{
@@ -138,11 +142,15 @@ blog:
     margin-bottom: 0px;
     border-bottom: 1px solid #ccc;}
 .malibu-left-close{display: block;
-    position: fixed;
-    left: 45%;
+    position: absolute;
+	right:15px;
+	cursor:pointer;
     top: 15px;
     font-weight: 600;
     font-size: 20px;}
+	.malibu-left-close:hover{
+		color:red;
+	}
 @media only screen and (min-width: 1360px){
 .grid-bg{max-width:1360px;display:block;margin:0 auto;}
 }
@@ -187,35 +195,36 @@ blog:
 
 				
 
-				<h3>CATEGORIES:</h3>
+				<h3>POPULAR PRODUCTS:</h3>
 				
 				<ul class="categoryGrid" data-product-type="categories">
-					<li><a href="##">Adirondack Chairs</a></li>	
-					<li><a href="#">Adirondack Rockers</a></li>	
-					<li><a href="#">Dining</a></li>	
-					<li><a href="#">Dining Chairs</a></li>	
-					<li><a href="#">Bar</a></li>	
-					<li><a href="#">Bar Stools</a></li>	
-					<li><a href="#">Adirondack Footstools</a></li>	
-					<li><a href="#">Footstools</a></li>	
-					<li><a href="#">Benches</a></li>	
-					<li><a href="#">Lounges</a></li>	
-					<li><a href="#">Pillows</a></li>	
-					<li><a href="#">Dining Tables</a></li>	
-					<li><a href="#">Picnic Table</a></li>	
-					<li><a href="#">Deep Seating</a></li>	
-					<li><a href="#">Counter</a></li>	
-					<li><a href="#">Counter Chairs</a></li>	
-					<li><a href="#">Counter Tables</a></li>	
-					<li><a href="#">Coffee Tables</a></li>	
-					<li><a href="#">Tete-a-Tete</a></li>	
-					<li><a href="#">Bar Tables</a></li>	
-					<li><a href="#">Umbrellas</a></li>	
-					<li><a href="#">Collections</a></li>	
+					<li><a href="/adirondack-chairs">Adirondack Chairs</a></li>	
+					<li><a href="/adirondack-rockers">Adirondack Rockers</a></li>	
+					<li><a href="/rocking-chairs">Rocking Chairs</a></li>	
+					<li><a href="/dining">Dining</a></li>	
+					<li><a href="/bar">Bar</a></li>	
+					<li><a href="/bar-stools">Bar Stools</a></li>	
+					<li><a href="/adirondack-footstools">Adirondack Footstools</a></li>	
+					<li><a href="/footstools">Footstools</a></li>	
+					<li><a href="/bences">Benches</a></li>	
+					<li><a href="/lounges">Lounges</a></li>	
+					<li><a href="/pillows">Pillows</a></li>	
+					<li><a href="/dining-tables">Dining Tables</a></li>	
+					<li><a href="/picnic-table">Picnic Table</a></li>	
+					<li><a href="/deep-seating">Deep Seating</a></li>	
+					<li><a href="/counter">Counter</a></li>	
+					<li><a href="/counter-chairs">Counter Chairs</a></li>	
+					<li><a href="/counter-tables">Counter Tables</a></li>	
+					<li><a href="/coffee-tables">Coffee Tables</a></li>	
+					<li><a href="/tete-a-tete">Tete-a-Tete</a></li>	
+					<li><a href="/bar-tables">Bar Tables</a></li>	
+					<li><a href="/umbrellas">Umbrellas</a></li>	
+					<li><a href="/collections">Collections</a></li>	
 				</ul>					
              </aside>
+			 <div class="malibu-left-nav"><p>Categories</p></div>
             <main class="page-content" id="product-listing-container">
-			<div class="malibu-left-nav"><p>Categories</p></div>
+			
 			<div class="widget-flex">
 				<div class="widget-row">
 				
@@ -346,24 +355,28 @@ blog:
 				<h3>CATEGORIES:</h3>
 				
 				<ul class="categoryGrid" data-product-type="categories">
-					<li><a href="/adirondack-chairs.html">Adirondack Chairs</a></li>		
-					<li><a href="/deep-seating-furniture.html">Deep Seating</a></li>	
-					<li><a href="/chaise-lounge-chairs.html">Lounge Chairs</a></li>	
-					<li><a href="/polycategories/dining-furniture/dining-chairs.html">Dining Chairs</a></li>	
-					<li><a href="/counter-outdoor-furniture/counter-chairs.html">Counter Chairs</a></li>	
-					<li><a href="/outdoor-bar-furniture/bar-chairs.html">Bar Chairs</a></li>	
-					<li><a href="/polycategories/chairs-seating/patio-stools.html">Patio Stools</a></li>	
-					<li><a href="/polycategories/chairs-seating/rocking-chairs.html">Rocking Chairs</a></li>	
-					<li><a href="/polycategories/chairs-seating/gliders.html/">Gliders</a></li>	
-					<li><a href="/polycategories/chairs-seating/porch-swings.html">Porch Swings</a></li>	
-					<li><a href="/polycategories/dining-furniture/dining-tables.html">Dining Tables</a></li>	
-					<li><a href="/outdoor-bar-furniture/bar-tables.html">Bar Tables</a></li>	
-					<li><a href="/counter-outdoor-furniture/counter-tables.html">Counter Tables</a></li>	
-					<li><a href="/tables/side-tables/">Side Tables</a></li>	
-					<li><a href="/tables/coffee-tables/">Coffee Tables</a></li>	
-					<li><a href="/tables/conversation-tables/">Conversation Tables</a></li>	
-					<li><a href="">Picnic Tables</a></li>	
-					<li><a href="/outdoor-furniture-accessories.html">Accessories</a></li>	
+					<li><a href="/adirondack-chairs">Adirondack Chairs</a></li>	
+					<li><a href="/adirondack-rockers">Adirondack Rockers</a></li>	
+					<li><a href="/rocking-chairs">Rocking Chairs</a></li>	
+					<li><a href="/dining">Dining</a></li>	
+					<li><a href="/bar">Bar</a></li>	
+					<li><a href="/bar-stools">Bar Stools</a></li>	
+					<li><a href="/adirondack-footstools">Adirondack Footstools</a></li>	
+					<li><a href="/footstools">Footstools</a></li>	
+					<li><a href="/bences">Benches</a></li>	
+					<li><a href="/lounges">Lounges</a></li>	
+					<li><a href="/pillows">Pillows</a></li>	
+					<li><a href="/dining-tables">Dining Tables</a></li>	
+					<li><a href="/picnic-table">Picnic Table</a></li>	
+					<li><a href="/deep-seating">Deep Seating</a></li>	
+					<li><a href="/counter">Counter</a></li>	
+					<li><a href="/counter-chairs">Counter Chairs</a></li>	
+					<li><a href="/counter-tables">Counter Tables</a></li>	
+					<li><a href="/coffee-tables">Coffee Tables</a></li>	
+					<li><a href="/tete-a-tete">Tete-a-Tete</a></li>	
+					<li><a href="/bar-tables">Bar Tables</a></li>	
+					<li><a href="/umbrellas">Umbrellas</a></li>	
+					<li><a href="/collections">Collections</a></li>	
 				</ul>		
 
 

@@ -1,5 +1,5 @@
 {
-  "name": "Patio Express - (Updated links on footer and header) (1)",
+  "name": "CRP v0.04",
   "version": "1",
   "meta": {
     "price": 0,
@@ -555,7 +555,7 @@
         "button--primary-color": "#ffffff",
         "button--primary-colorHover": "#ffffff",
         "button--primary-colorActive": "#ffffff",
-        "button--primary-backgroundColor": "#88C541",
+        "button--primary-backgroundColor": "#395ba7",
         "button--primary-backgroundColorHover": "#88C541",
         "button--primary-backgroundColorActive": "#333333",
         "button--disabled-color": "#ffffff",

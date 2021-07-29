@@ -2,7 +2,15 @@
   "customLayouts": {
     "brand": {},
     "category": {},
-    "page": {},
+    "page": {
+      "about-us.html" : "/about-us",
+      "about-crp.html" : "/about-crp",
+      "customer-feedback.html" : "/customer-feedback",
+      "best-price-guarantee.html" : "/best-price-guarantee",
+      "terms-and-conditions.html" : "/terms-and-conditions",
+      "privacy-policy.html" : "/privacy-policy",
+      "crp-benefits.html" : "/crp-benefits"
+    },
     "product": {}
   },
   "normalStoreUrl": "https://brandster-inc-5.mybigcommerce.com/",

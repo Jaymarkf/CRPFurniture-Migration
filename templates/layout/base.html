@@ -94,6 +94,14 @@
                 if(inIframe() == true){
                     $(this).contents().find('body').append(_styleDoc);
                 }
+               setTimeout(function(){
+                $('.popup_frame_sticky').css('top','0px');
+               },1500);
+
+               $('.close').on('click',function(){
+                    $('.popup_frame_sticky').css('top','-200%');
+               });
+
             });
         
 		

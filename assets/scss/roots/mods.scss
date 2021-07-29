@@ -119,7 +119,7 @@ h3{
     font-weight: 300;
 	font-size: 2rem;
 	padding: 15px 79px;
-    border-bottom: 2px solid #6aaf0a;
+    border-bottom: 2px solid #3bae87;
     width: fit-content;
     margin: 0 auto 30px auto;
     text-transform: uppercase;
@@ -361,10 +361,10 @@ footer .socialLinks{
     fill: stencilColor("card-figcaption-button-background");
 }
 .card-figcaption-body .button:not(.quickview){
-    background-color: #6aaf0a;
-    border: 1px solid #6aaf0a;
+    background-color: #3bae87;
+    border: 1px solid #3bae87;
 }
-
+ 
 .quickView .productView-images,
 .quickView .productView-details{
     max-width: 50%;
@@ -1906,7 +1906,7 @@ li.pagination-item--previous a{
 	.page-sidebar + .page-content{width:80%;}
     .page-sidebar{
         padding: 20px 20px 0;
-		width:20%;
+		width:100%;
     }
     .page-sidebar #subcategoryList h5{
         border-bottom: 1px solid stencilColor('color-greyMedium');
