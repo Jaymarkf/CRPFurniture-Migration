@@ -1049,3 +1049,12 @@ div#review_header{
 	div#sa_review_section{
 		margin-top:100px;
 	}
+
+	.form-prefixPostfix {
+
+		&.wrap {
+			flex-wrap: wrap;
+			align-items: center;
+	
+		}
+	}

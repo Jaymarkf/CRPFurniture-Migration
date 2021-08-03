@@ -918,7 +918,8 @@ footer .socialLinks{
     width:100%;
     display: flex;
     flex-flow: row wrap;
-    margin: 0 -15px;
+    justify-content: center;
+    margin: 0;
     align-items: flex-start;
 }
 .footer-info-col{
@@ -1388,6 +1389,7 @@ li.pagination-item--previous a{
     text-transform: uppercase;
     font-weight: bold;
     font-size: 14px;
+    position:relative;
 }
 
 .button--out-of-stock,
@@ -1574,7 +1576,7 @@ li.pagination-item--previous a{
     margin-bottom: 5px;
 }
 .fastCart .previewCartCheckout .preview-editcart{background: #606060!important;border: 1px solid #606060!important;}
-.fastCart .previewCartCheckout .button--primary{border:1px solid #88c541}
+.fastCart .previewCartCheckout .button--primary{background-color:#3bae87;border:1px solid gray}
 .fastCart .previewCartCheckout .button--primary:hover{border:1px solid #000}
 .fastCart .previewCartCheckout > div > p > strong{font-size:21px;}
 .optimizedCheckout-headingSecondary{width: 50%}

@@ -341,25 +341,25 @@ address{ display:none; }
 	padding: 25px 15px 40px;
 }
 
-.footer-info-col[data-section-type="footer-brands"] {
-    flex: 1 1 auto;
-    order: 2;
-}
+// .footer-info-col[data-section-type="footer-brands"] {
+//     flex: 1 1 auto;
+//     order: 2;
+// }
 
-.footer-info-col[data-section-type="footer-categories"] {
-    flex: 1 1 auto;
-    order: 3;
-}
+// .footer-info-col[data-section-type="footer-categories"] {
+//     flex: 1 1 auto;
+//     order: 3;
+// }
 
-.footer-info-col[data-section-type="footer-webPages"] {
-    flex: 1 1 auto;
-    order: 1;
-}
+// .footer-info-col[data-section-type="footer-webPages"] {
+//     flex: 1 1 auto;
+//     order: 1;
+// }
 
-.footer-info-col[data-section-type=storeInfo] {
-    flex: 1 1 auto;
-    order: 4;
-}
+// .footer-info-col[data-section-type=storeInfo] {
+//     flex: 1 1 auto;
+//     order: 4;
+// }
 //------------------------------------------------------------------------------
 // certs Logo
 //------------------------------------------------------------------------------
@@ -632,7 +632,7 @@ div[itemprop="description"]{
 // Pro-services page
 //------------------------------------------------------------------------------
 
-.container .crp-pro-services-account{
+.container .crp-pro-services-account\.html{
     font-family: 'Montserrat', sans-serif;
     background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.pinimg.com/originals/8c/0d/23/8c0d235679e118fd77cd33d774d01dde.jpg') !important;
     background-size: cover;

@@ -29,26 +29,7 @@
 <footer class="footer" role="contentinfo">
     <div class="container">
         <section class="footer-info 4a616d6573">
-            <article class="footer-info-col footer-info-dropdown footer-info-col--small  is-open" data-section-type="footer-categories">
-                <h5 class="footer-info-heading">
-                   Pro Services
-                    <i class="icon" aria-hidden="true">
-                        <svg><use xlink:href="#icon-downselector" /></svg>
-                    </i>
-                </h5>
-				<ul class="footer-info-list">
 
-				<li><a href="/crp-pro-services-account">Sign Up Now</a></li>
-				<ul>
-            </article>
-
-           
-        
-		
-		
-		
-		
-		
 		<!-- <article class="footer-info-col footer-info-dropdown footer-info-col--small  is-open" data-section-type="footer-webPages">
                 <h5 class="footer-info-heading">
 					Resources
@@ -74,13 +55,14 @@
                     </i>
                 </h5>
 				<ul class="footer-info-list">
-
-						<li><a href="/about-us">About Us</a></li>
-						<li><a href="/about-crp">About CRP</a></li>
-						<li><a href="/customer-feedback">Customer Feedback</a></li>
-						<li><a href="/best-price-guarantee">Best Price Guarantee</a></li>
+                    {{#each pages}}
+                        {{#or (if name '==' 'About Us') (if name '==' 'About CRP') (if name '==' 'Customer Feedback') (if name '==' 'Best Price Guarantee')}}
+                            <li><a href="{{url}}">{{name}}</a></li>
+                        {{/or}}
+                    {{/each}}
 						<li><a target="_blank" class="return-scroll" href="https://www.brandster.com/policies#shipping">Shipping & Delivery</a></li>
 						<li><a target="_blank" class="return-scroll" href="https://www.brandster.com/policies#returns">Easy Returns</a></li>
+               
 				<ul>
             </article>
 		
@@ -104,15 +86,13 @@
                     <li>
                         <a target="_blank" class="shipping-scroll" href="https://www.brandster.com/policies#shipping">Shipping Policy</a>
                     </li>
-                    <li>
-                        <a href="/terms-and-conditions">Terms & Conditions</a>
-                    </li>
-                    <li>
-                        <a href="/privacy-policy">Privacy Policy</a>
-                    </li>
-                    <li>
-                        <a href="/crp-benefits">CRP Benefits</a>
-                    </li>
+                    {{#each pages}}
+                    {{#or (if name '==' 'Terms and Conditions') (if name '==' 'Privacy Policy') (if name '==' 'CRP Benefits')}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/or}}
+                    {{/each}}
                     
                 </ul>
             </article>		
@@ -141,7 +121,17 @@
                 </ul>
             </article>
 		
-		
+            <article class="footer-info-col footer-info-dropdown footer-info-col--small  is-open" data-section-type="footer-categories">
+                <h5 class="footer-info-heading">
+                   Pro Services
+                    <i class="icon" aria-hidden="true">
+                        <svg><use xlink:href="#icon-downselector" /></svg>
+                    </i>
+                </h5>
+				<ul class="footer-info-list">
+				<li><a href="/crp-pro-services-account.html">Sign Up Now</a></li>
+				<ul>
+            </article>
 		
 		
 		

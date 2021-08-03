@@ -13,10 +13,17 @@
          <span class="header_top_phone" style="font-weight:bold;font-size:1.2rem;">SALES <a href="tel:+1-800-357-5044">(800) 357-5044</a></span>
          
          <span class="header_top">
-            <a href="/contact-us/" class="contact">Contact Us</a> |
-            <a href="/about-us" class="about-us">About Brandster</a> | 
-            <!-- <a href="/customer-feedback" class="Reviews">Reviews</a> |  -->
-            <a href="/crp-pro-services-account/" class="Reviews">Pro Services</a>
+           {{#each pages}}
+           {{#if name '==' 'Contact Us'}}
+           <a href="{{url}}" class="contact">{{name}}</a> | 
+           {{/if}}
+           {{#if name '==' 'About Us'}}
+           <a href="{{url}}" class="about-us">About Brandster</a> | 
+           {{/if}}
+           {{#if name '==' 'Pro Services Account'}}
+           <a href="{{url}}" class="Reviews">Pro Services</a>
+           {{/if}}
+            {{/each}}
         </span>
          
          

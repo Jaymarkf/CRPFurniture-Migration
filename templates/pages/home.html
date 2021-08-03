@@ -197,28 +197,13 @@ blog:
 				<h3>POPULAR PRODUCTS:</h3>
 				
 				<ul class="categoryGrid" data-product-type="categories">
-					<li><a href="/outdoor/adirondack-chairs">Adirondack Chairs</a></li>	
-					<li><a href="/outdoor/adirondack-rockers">Adirondack Rockers</a></li>	
-					<li><a href="/outdoor/rocking-chairs">Rocking Chairs</a></li>	
-					<li><a href="/outdoor/dining">Dining</a></li>	
-					<li><a href="/outdoor/bar">Bar</a></li>	
-					<li><a href="/outdoor/bar-stools">Bar Stools</a></li>	
-					<li><a href="/outdoor/adirondack-footstools">Adirondack Footstools</a></li>	
-					<li><a href="/outdoor/footstools">Footstools</a></li>	
-					<li><a href="/outdoor/bences">Benches</a></li>	
-					<li><a href="/outdoor/lounges">Lounges</a></li>	
-					<li><a href="/outdoor/pillows">Pillows</a></li>	
-					<li><a href="/outdoor/dining-tables">Dining Tables</a></li>	
-					<li><a href="/outdoor/picnic-table">Picnic Table</a></li>	
-					<li><a href="/outdoor/deep-seating">Deep Seating</a></li>	
-					<li><a href="/outdoor/counter">Counter</a></li>	
-					<li><a href="/outdoor/counter-chairs">Counter Chairs</a></li>	
-					<li><a href="/outdoor/counter-tables">Counter Tables</a></li>	
-					<li><a href="/outdoor/coffee-tables">Coffee Tables</a></li>	
-					<li><a href="/outdoor/tete-a-tete">Tete-a-Tete</a></li>	
-					<li><a href="/outdoor/bar-tables">Bar Tables</a></li>	
-					<li><a href="/outdoor/umbrellas">Umbrellas</a></li>	
-					<li><a href="/outdoor/collections">Collections</a></li>	
+					{{#each categories}}
+					{{#if name '==' 'Outdoor'}}
+						{{#each children}}
+							<li><a href="{{url}}">{{name}}</a></li>	
+						{{/each}}
+					{{/if}}
+					{{/each}}
 				</ul>					
              </aside>
 			 <div class="malibu-left-nav"><p>Categories</p></div>
@@ -226,55 +211,78 @@ blog:
 			
 			<div class="widget-flex">
 				<div class="widget-row">
-				
-					<div class="widget-item">
-						<a href="/new-for-2020-products">
-							<img src="{{cdn 'assets/img/CRP-New-Products-For-2020.jpg'}}" alt="">
-							<div class="text">New For 2020</div>
-						</a>
-					</div>
-				
-				
-					<div class="widget-item">
-						<a href="/outdoor/deep-seating">
-							<img src="{{cdn 'assets/img/CRP-Deep-Seating_3-min.png'}}" alt="">
-							<div class="text">Deep Seating</div>
-						</a>
-					</div>
-				
-				</div>
-				<div class="widget-row">
-				
-					<div class="widget-item">
-						<a href="/outdoor/bar">
-							<img src="{{cdn 'assets/img/CRP-Bar-Height-min.png'}}" alt="">
-							<div class="text">Bar Height</div>
-						</a>
-					</div>
+					{{#each categories}}
+					{{#if name '==' 'New for 2020 Products'}}
+						<div class="widget-item">
+							<a href="{{url}}">
+								<img src="{{cdn 'assets/img/CRP-New-Products-For-2020.jpg'}}" alt="">
+								<div class="text">New For 2020</div>
+							</a>
+						</div>
+					{{/if}}
 				
 				
-					<div class="widget-item">
-						<a href="/crp-adirondack">
-							<img src="{{cdn 'assets/img/CRP-Adirondacks-min.png'}}" alt="">
-							<div class="text">Adirondacks</div>
-						</a>
-					</div>
+					{{#if name '==' 'Outdoor'}}
+						{{#each children}}
+							{{#if name '==' 'Deep Seating'}}
+								<div class="widget-item">
+									<a href="{{url}}">
+										<img src="{{cdn 'assets/img/CRP-Deep-Seating_3-min.png'}}" alt="">
+										<div class="text">Deep Seating</div>
+									</a>
+								</div>
+							{{/if}}
+						{{/each}}
+					{{/if}}
+					{{/each}}
 				
 				</div>
 				<div class="widget-row">
-					<div class="widget-item">
-						<a href="/crp-dining">
-							<img src="{{cdn 'assets/img/CRP-Dinning-min.png'}}" alt="">
-							<div class="text">Dining</div>
-						</a>
-					</div>
-				
-					<div class="widget-item">
-						<a href="/crp-lounge">
-							<img src="{{cdn 'assets/img/CRP-Chaise-Lounge-min.png'}}" alt="">
-							<div class="text">Chaise Lounge</div>
-						</a>
-					</div>
+					{{#each categories}}
+						{{#if name '==' 'Outdoor'}}
+								{{#each children}}
+									{{#if name '==' 'Bar'}}
+										<div class="widget-item">
+											<a href="{{url}}">
+												<img src="{{cdn 'assets/img/CRP-Bar-Height-min.png'}}" alt="">
+												<div class="text">Bar Height</div>
+											</a>
+										</div>
+									{{/if}}
+								{{/each}}
+						{{/if}}
+							
+						{{#if name '==' 'Adirondack'}}
+							<div class="widget-item">
+								<a href="{{url}}">
+									<img src="{{cdn 'assets/img/CRP-Adirondacks-min.png'}}" alt="">
+									<div class="text">Adirondacks</div>
+								</a>
+							</div>
+						{{/if}}
+						
+					
+					{{/each}}
+				</div>
+				<div class="widget-row">
+					{{#each categories}}
+						{{#if name '==' 'Dining'}}
+							<div class="widget-item">
+								<a href="{{url}}">
+									<img src="{{cdn 'assets/img/CRP-Dinning-min.png'}}" alt="">
+									<div class="text">Dining</div>
+								</a>
+							</div>
+						{{/if}}
+						{{#if name '==' 'Lounge'}}
+							<div class="widget-item">
+								<a href="{{url}}">
+									<img src="{{cdn 'assets/img/CRP-Chaise-Lounge-min.png'}}" alt="">
+									<div class="text">Chaise Lounge</div>
+								</a>
+							</div>
+						{{/if}}
+					{{/each}}
 				</div>
 			</div>
 			{{#if banners.top}}
@@ -351,31 +359,16 @@ blog:
 				
 				
 
-				<h3>CATEGORIES:</h3>
+				<h3>POPULAR PRODUCTS: </h3>
 				
 				<ul class="categoryGrid" data-product-type="categories">
-					<li><a href="/outdoor/adirondack-chairs">Adirondack Chairs</a></li>	
-					<li><a href="/outdoor/adirondack-rockers">Adirondack Rockers</a></li>	
-					<li><a href="/outdoor/rocking-chairs">Rocking Chairs</a></li>	
-					<li><a href="/outdoor/dining">Dining</a></li>	
-					<li><a href="/outdoor/bar">Bar</a></li>	
-					<li><a href="/outdoor/bar-stools">Bar Stools</a></li>	
-					<li><a href="/outdoor/adirondack-footstools">Adirondack Footstools</a></li>	
-					<li><a href="/outdoor/footstools">Footstools</a></li>	
-					<li><a href="/outdoor/bences">Benches</a></li>	
-					<li><a href="/outdoor/lounges">Lounges</a></li>	
-					<li><a href="/outdoor/pillows">Pillows</a></li>	
-					<li><a href="/outdoor/dining-tables">Dining Tables</a></li>	
-					<li><a href="/outdoor/picnic-table">Picnic Table</a></li>	
-					<li><a href="/outdoor/deep-seating">Deep Seating</a></li>	
-					<li><a href="/outdoor/counter">Counter</a></li>	
-					<li><a href="/outdoor/counter-chairs">Counter Chairs</a></li>	
-					<li><a href="/outdoor/counter-tables">Counter Tables</a></li>	
-					<li><a href="/outdoor/coffee-tables">Coffee Tables</a></li>	
-					<li><a href="/outdoor/tete-a-tete">Tete-a-Tete</a></li>	
-					<li><a href="/outdoor/bar-tables">Bar Tables</a></li>	
-					<li><a href="/outdoor/umbrellas">Umbrellas</a></li>	
-					<li><a href="/outdoor/collections">Collections</a></li>	
+					{{#each categories}}
+					{{#if name '==' 'Outdoor'}}
+						{{#each children}}
+							<li><a href="{{url}}">{{name}}</a></li>	
+						{{/each}}
+					{{/if}}
+					{{/each}}
 				</ul>		
 
 
