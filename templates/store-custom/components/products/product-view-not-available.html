@@ -233,10 +233,14 @@
                                     <dd class="productView-info-value">{{product.availability}}</dd>
                                 </div>
                             {{/if}}
-
-                            <div style="display:block;width:100%;text-align:center;">
-                                <h1 style="color:red;margin:0;border-bottom: 1px solid #ccc;font-family: fantasy; font-weight: bolder;">{{product.price.without_tax.formatted}}</h1>
+                            <div class="productView-price">
+                                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                                    {{> components/products/price price=product.price schema_org=schema}}
+                                {{else}}
+                                    {{> components/common/login-for-pricing}}
+                                {{/or}}
                             </div>
+                            
                             <div style="display:block;width:100%;text-align:center;text-transform: uppercase;
                             font-weight: 800;
                             color: #4a4a4a;
@@ -246,13 +250,7 @@
                             {{#if product.can_purchase}}
                                 {{> components/products/add-to-cart}}
                             {{/if}}
-                            <div class="productView-price">
-                                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
-                                    {{> components/products/price price=product.price schema_org=schema}}
-                                {{else}}
-                                    {{> components/common/login-for-pricing}}
-                                {{/or}}
-                            </div>
+                  
 
                             <p class="productView-price" style="border-bottom: none;">
                                 <span><a href="tel:1-800-357-5044" class="btn btn-success">CALL FOR AVAILABILITY</a></span>
