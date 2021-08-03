@@ -493,7 +493,6 @@ $cart-item-label-offset:                $cart-thumbnail-maxWidth + $cart-item-sp
     .button {
         display: block;
         margin-bottom: 0;
-        background-color:#3bae87;
 
         @include breakpoint("small") {
             display: inline-block;
