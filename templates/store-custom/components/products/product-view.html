@@ -174,7 +174,9 @@
 	                 {{#if product.sku}}
                 <div class="productSKU">
                     <dt class="productView-info-name sku-label">{{lang 'products.sku'}}</dt>
-                    <dd class="productView-info-value" data-product-sku{{#if schema}} itemprop="sku"{{/if}}>{{product.sku}}</dd>
+                    <dd class="productView-info-value" >{{#filter product.custom_fields 'Parent Sku' property='name' }}
+                    {{value}}
+		            {{else}}{{/filter}}</dd>
                 </div>
             {{/if}}
             {{#and product.sku product.upc}}{{/and}}
@@ -572,4 +574,40 @@
 </div>
 
 <!-- product script -->
+<script src = "{{cdn 'assets/jquery.min.js'}}" > </script> 
+	<script >
+
+	$(document).ready(function () {
+		var defsave = Math.abs($(".productView-price .save-label .price--saving").text().replace("$", ""));
+		var defprice1 = Math.abs($(".productView-price #defprice").text().replace("$", ""));
+		var saleprice1= Math.abs($(".productView-price #saleprice").text().replace("$", "").replace(",", ""));
+		var defprice =  Math.abs($(".productView-price #defprice").text().replace("$", "").replace(",", ""));
+		
+		var newdefprice = 0;
+
+		
+		$(".productView-price #saleprice").on('DOMSubtreeModified', function () {
+			var saleprice = Math.abs($(".productView-price #saleprice").text().replace("$", "").replace(",", ""));
+			var saveprice =  Math.abs($(".productView-price .save-label .price--saving").text().replace("$", "").replace(",", ""));
+			
+			newdefprice = defprice + (saleprice - saleprice1);
+			$(".productView-price #defprice").text('$' + Math.abs(newdefprice).toFixed(2));
+			
+			
+			});
+			
+		
+		
+		$('h2:contains("Short Description")').hide();
+		$('h2:contains("Description")').hide();
+
+	});
+
+
+
+</script>
 </div>
+
+
+
+

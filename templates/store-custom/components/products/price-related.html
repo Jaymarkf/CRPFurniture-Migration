@@ -4,14 +4,14 @@ paths generate the same HTML structure with some differences in whether that ele
 
 If you are making a change here or in price-range.html, you probably want to make that change in both files. --}}
 
-         <div style="position:relative" class="save-label"  class="price-section price-section--saving price save-label" {{#unless price.saved}}style="display: none;"{{/unless}}>
-             <span style="">Save</span>  <span style=""  class="price price--saving">
+         <div style="display:block;" class="save-label" class="price-section price-section--saving price" >
+             <span style="">Save</span>  <span style="" class="price price--saving">
                      {{price.saved.formatted}}
                 </span> 
 				<div class="saveover" style="display:none;"></div>
          </div>
 {{#and price.price_range (if theme_settings.price_ranges '==' true)}}
-    {{> components/products/price-range price=price schema_org=schema_org}}
+    {{> store-custom/components/products/price-range price=price schema_org=schema_org}}
 {{else}}
     {{#if price.with_tax}}
         <div class="price-section price-section--withTax" {{#if schema_org}}itemprop="offers" itemscope itemtype="http://schema.org/Offer"{{/if}}>
@@ -43,12 +43,12 @@ If you are making a change here or in price-range.html, you probably want to mak
     {{/if}}
     {{#if price.without_tax}}
         <div class="price-section price-section--withoutTax {{#if price.with_tax}}price-section--minor{{/if}}"  {{#if schema_org}}itemprop="offers" itemscope itemtype="http://schema.org/Offer"{{/if}}>
-            <span class="price-section price-section--withoutTax non-sale-price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}} msrp-custom" {{#unless price.non_sale_price_without_tax}}style="display: none;"{{/unless}}>
-                <span id="defprice"  class="price price--non-sale">
+            <span class="price-section price-section--withoutTax non-sale-price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}} msrp-custom"  >
+                <span id="defprice1"   class="price price--non-sale">
                     {{price.non_sale_price_without_tax.formatted}}
                 </span>
             </span>
-            <span  id="saleprice" data-product-price-without-tax class="price price--withoutTax">{{price.without_tax.formatted}}</span>
+            <span  id="saleprice"  class="price price--withoutTax">{{price.without_tax.formatted}}</span>
             {{#if price.rrp_with_tax}}
                 <span data-product-rrp-without-tax class="price price--rrp">{{price.rrp_without_tax.formatted}}</span>
             {{/if}}
